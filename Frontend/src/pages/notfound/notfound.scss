@@ -1,0 +1,56 @@
+@import "../../styles/variables.scss";
+@import "../../styles/responsive.scss";
+.notfound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  .img-404 {
+    height: 300px;
+    width: auto;
+    @include md {
+      height: 200px;
+    }
+  }
+  .error {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .title {
+      font-size: 50px;
+      font-weight: bold;
+      color: $main-text-color;
+      text-shadow: 2px 2px $drop-shadow-color;
+    }
+    .text {
+      font-size: 30px;
+      font-weight: bold;
+      color: $main-text-color;
+      text-shadow: 2px 2px $drop-shadow-color;
+    }
+    @include md {
+      .title {
+        font-size: 40px;
+      }
+      .text {
+        font-size: 20px;
+      }
+    }
+  }
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0px;
+    cursor: pointer;
+    font-size: medium;
+    border-radius: 9999px;
+    padding: 10px 20px;
+    color: $main-text-color;
+    background-color: $button-bg;
+    filter: drop-shadow(0 0 2.5em $drop-shadow-color);
+  }
+}

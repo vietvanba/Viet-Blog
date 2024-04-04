@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./Frontend
+    image: frontend
+    ports: 
+      - 80:80
+  api-gateway:
+    build: ./Backend/api-gateway
+    image: api-gateway
+    env_file:
+      - ./Backend/.env
+  auth-service:
+    build: ./Backend/authservice
+    image: auth-service
+    env_file:
+      - ./Backend/.env
+  question-service:
+    build: ./Backend/question
+    image: question-service
+    env_file:
+      - ./Backend/.env
+  mail-service:
+    build: ./Backend/mailservice
+    image: mail-service
+    env_file:
+      - ./Backend/.env
+  location-service:
+    build: ./Backend/vnlocation-api
+    image: location-service
+    env_file:
+      - ./Backend/.env
+  postgres:
+    image: postgres:14
+    ports:
+      - 5432:5432
+    env_file:
+      - ./Backend/sql.env
+    volumes:
+      - ./Backend/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres-data:/var/lib/postgresql/data
+volumes:
+  postgres-data:

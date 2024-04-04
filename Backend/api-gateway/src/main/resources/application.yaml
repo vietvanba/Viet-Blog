@@ -1,0 +1,36 @@
+jwt:
+  secret: ${JWT_SECRET}
+server:
+  port: 8080
+spring:
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+        cors-configurations:
+          "[/**]":
+            allowedOrigins: ${ALLOWED_ORIGINS:}
+            allowedMethods:
+              - GET
+              - HEAD
+              - POST
+              - PUT
+              - DELETE
+              - TRACE
+              - OPTIONS
+              - PATCH
+            allowedHeaders:
+              - "Authorization"
+              - "Content-Type"
+            allowCredentials: ${ALLOW_CREDENTIALS:}
+            maxAge: 3600
+log_path:
+  folder: "/var/log/api-gateway/"
+  file: "/api-gateway"
+name:
+  services:
+    auth: ${AUTH_SERVICE_NAME:auth-service}
+    mail: ${MAIL_SERVICE_NAME:mail-service}
+    question: ${QUESTION_SERVICE_NAME:question-service}
+    location: ${LOCATION_SERVICE_NAME:location-service}

@@ -1,0 +1,38 @@
+@import "../../styles/variables.scss";
+.list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: $list-bg-color;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px;
+  border-bottom-width: 5px;
+  border-right-width: 5px;
+  border-style: solid;
+  border-color: $skill-bg;
+  gap: 20px;
+  width: 90%;
+  filter: drop-shadow(0 0 2em $drop-shadow-color);
+  .excerpt {
+    height: 100px;
+  }
+  .preview {
+    .title {
+      font-size: 2em;
+    }
+    .opening-text {
+      font-size: 1em;
+    }
+    .additional-detail {
+      display: flex;
+      font-size: 0.8em;
+      gap: 5px;
+      .created-time {
+      }
+      .category {
+        font-weight: 900;
+      }
+    }
+  }
+}

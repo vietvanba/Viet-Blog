@@ -1,0 +1,47 @@
+@import "../../styles/variables.scss";
+@import "../../styles/responsive.scss";
+.mySkill {
+  display: flex;
+  flex-direction: column;
+  h1 {
+    text-align: center;
+  }
+  .skills {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    @include md {
+      width: 300px;
+    }
+    .skill {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      background-color: $skill-bg;
+      border-radius: 0.75rem;
+      flex-direction: column;
+      @include md {
+        padding: 10px;
+      }
+      .logo {
+        max-width: 150px;
+        height: 30px;
+        width: auto;
+      }
+      .title {
+        padding-top: 10px;
+        p {
+          text-shadow: 0.5px 0.5px $nav-text;
+          font-size: larger;
+          font-weight: 450;
+          text-align: center;
+        }
+      }
+    }
+  }
+}

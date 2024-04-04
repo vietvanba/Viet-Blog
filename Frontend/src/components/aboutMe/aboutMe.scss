@@ -1,0 +1,23 @@
+@import "../../styles/variables.scss";
+@import "../../styles/responsive.scss";
+.aboutme {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 70ch;
+  gap: 20px;
+  background-color: $skill-bg;
+  padding: 50px;
+  border-radius: 20px;
+  @include md {
+    padding: 10px;
+    max-width: 40ch;
+  }
+  .title {
+  }
+  .description {
+    text-align: center;
+    font-size: large;
+  }
+}

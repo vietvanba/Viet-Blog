@@ -1,0 +1,84 @@
+@import "../../styles/variables.scss";
+@import "../../styles/responsive.scss";
+
+.introduce {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .welcome {
+    max-width: 40ch;
+    display: block;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    text-shadow: 0.5px 0.5px $nav-text;
+    padding: 20px 50px;
+  }
+  .contact {
+    width: 70%;
+    .button {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      @include md {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .btn-style {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        border: 0px;
+        cursor: pointer;
+      }
+      .contactme {
+        font-size: large;
+        padding: 10px 20px;
+        background-color: $button-bg;
+        color: $main-text-color;
+        gap: 10px;
+        @include md {
+          font-size: medium;
+        }
+      }
+      .cv {
+        font-size: large;
+        padding: 10px 20px;
+        gap: 10px;
+        background-color: $button-bg;
+        color: $main-text-color;
+
+        @include md {
+          font-size: medium;
+        }
+      }
+      .icon {
+        margin-top: 5px;
+      }
+      .box-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+
+        .linkedin {
+          background-color: $button-bg;
+          padding: 10px;
+          .linkedinimg {
+            height: 25px;
+            width: 25px;
+          }
+        }
+        .github {
+          background-color: $button-bg;
+          padding: 10px;
+          .githubimg {
+            height: 25px;
+            width: 25px;
+          }
+        }
+      }
+    }
+  }
+}

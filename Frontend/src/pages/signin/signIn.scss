@@ -1,0 +1,73 @@
+@import "../../styles/variables.scss";
+@import "../../styles/responsive.scss";
+
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  gap: 50px;
+  background-color: $button-bg;
+  width: fit-content;
+  padding: 3em 5em;
+  border-radius: 2em;
+  @include lg {
+    flex-direction: column;
+    gap: 0px;
+    background-color: $button-bg-md;
+    padding: 0;
+  }
+  .left-form {
+    .enterlogo {
+      width: 150px;
+      @include lg {
+        width: 50px;
+      }
+    }
+  }
+  .right-form {
+    .main-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      .title {
+        font-weight: 900;
+        text-align: center;
+        font-size: 2.5em;
+      }
+      .input {
+        display: flex;
+        flex-direction: column;
+        font-size: 1em;
+        height: 3em;
+        input {
+          display: flex;
+          align-items: center;
+          border: 0px;
+          font-size: 1em;
+          height: 2em;
+          padding: 15px 15px;
+          border-radius: 9999px;
+          background-color: $main-text-color;
+        }
+      }
+      .submit {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1em;
+        border: 0px;
+        height: 2em;
+        margin-top: 20px;
+        padding: 0 10px;
+        border-radius: 9999px;
+        cursor: pointer;
+        color: $drop-shadow-color;
+        background-color: $main-text-color;
+      }
+      .forgot {
+        text-decoration: underline;
+      }
+    }
+  }
+}

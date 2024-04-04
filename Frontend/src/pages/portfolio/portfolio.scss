@@ -1,0 +1,30 @@
+@import "../../styles/responsive.scss";
+.portfolio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  @include md {
+    gap: 30px;
+  }
+  .avatar {
+  }
+  .space {
+    @include md {
+      background: rgba(255, 255, 255, 0.5);
+      height: 50px;
+      width: 3px;
+      border-radius: 15px 15px;
+    }
+    background: rgba(255, 255, 255, 0.5);
+    height: 30px;
+    width: 2px;
+    border-radius: 15px 15px;
+    margin: 100px 0 50px 0;
+  }
+  .space {
+  }
+  .aboutMe {
+  }
+}

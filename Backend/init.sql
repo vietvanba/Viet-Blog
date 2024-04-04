@@ -1,0 +1,3 @@
+CREATE DATABASE mail;
+CREATE DATABASE question;
+CREATE DATABASE location;
