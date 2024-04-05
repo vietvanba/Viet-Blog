@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.validation.constraints.Email;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,7 +30,6 @@ public class Account implements UserDetails {
     private String avatar;
     @OneToMany(mappedBy = "account")
     private List<PersonalAddress> personalAddress;
-    @Email(message = "Please correct your email")
     private String email;
     private String phoneNumber;
     private Boolean active;
