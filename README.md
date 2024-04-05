@@ -7,14 +7,14 @@ List of technical skills in project:
 
 Frontend:
 
-> - React
+> - React (Nodejs v18.8.0)
 > - TypeScript
 > - HTML, CSS, SCSS,
 > - Framer Motion
 
 Backend:
 
-> - Java
+> - Java (Java 17)
 > - Spring Boot
 > - Spring validation
 > - Spring Security (JWT)
@@ -28,7 +28,7 @@ Webserver:
 
 Database:
 
-> - Postgres
+> - Postgres (14)
 
 Containerized:
 
@@ -40,7 +40,7 @@ Containerized:
 
 #### 1.1 Set up .env for Backend
 
-1. Copy .env file in folder `./1. EnvExample./Backend` to `./Backend` replace your details
+1. Copy .env file in folder `./1. EnvExample./Backend` to `./Backend` then replace your details
 
 ```env
 JWT_SECRET=6249585ab12c6e87a183e49c8737f1c605b0c5cd664961f9333a3027d00f148e #Your secret key
@@ -63,10 +63,28 @@ QUESTION_SERVICE_NAME=question-service #question service name. Please note this 
 LOCATION_SERVICE_NAME=location-service #location service name. Please note this environment same as the service name that config in docker-compose file
 ```
 
-2. Copy sql.env file in folder `./1. EnvExample./Backend` to `./Backend`
+2. Copy sql.env file in folder `./1. EnvExample./Backend` to `./Backend` then replace your details
 
 ```env
 POSTGRES_DB=account #set up your database name for postgres container
 POSTGRES_USER=user #set up your username for postgres container
 POSTGRES_PASSWORD=password #set up your password for postgres container
 ```
+
+#### 1.2 Set up .env for Frontend
+
+1. Copy .env file in folder `./1. EnvExample./Frontend` to `./Frontend` then replace your details
+
+```env
+VITE_API_URL='http://localhost' # Set up your domain
+```
+
+### Step 2: Go to root folder and run the command line below to build and run the project
+
+```docker
+docker-compose up -d --build # if this command not working. Please try run it with administrator or sudo command
+```
+
+## Website demo
+
+> VanBaViet Blog: [vanbaviet.com](https://vanbaviet.com)
