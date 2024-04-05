@@ -7,18 +7,17 @@
       { "name": "SQL", "url": "/blog/sql", "items": [] },
       { "name": "Java", "url": "/blog/java", "items": [] },
       { "name": "Git", "url": "/blog/git", "items": [] },
-      { "name": "Nginx", "url": "/blog/nginx", "items": [] }
+      { "name": "Nginx", "url": "/blog/nginx", "items": [] },
+      { "name": "Obsidian", "url": "/note/obsidian", "items": [] },
+      { "name": "Others", "url": "/note/others", "items": [] }
     ]
   },
   { "name": "About", "url": "/about", "items": [] },
   { "name": "Contact", "url": "/contact", "items": [] },
   {
-    "name": "My note",
-    "url": "/note",
-    "items": [
-      { "name": "Obsidian", "url": "/note/obsidian", "items": [] },
-      { "name": "Others", "url": "/note/others", "items": [] }
-    ]
+    "name": "Book Store",
+    "url": "/bookstore",
+    "items": []
   },
   { "name": "Portfolio", "url": "/portfolio", "items": [] },
   { "name": "Sign in", "url": "/signin", "items": [] },
