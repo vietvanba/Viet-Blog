@@ -2,7 +2,11 @@
 
 > By [@vietvanba](https://www.linkedin.com/in/vietvanba/)
 
-The purpose of this project is to self-learn how to create a blog website and practice my skills, integrating some new technology, framework,...
+The purpose of this project is to self-learn how to create a blog website and practice my skills, integrating some new technology, framework,...\
+This repository has been merged from two different repositories owned by me
+
+> [Backend_BlogViet](https://github.com/vietvanba/Backend_BlogViet) > <br/> > [Frontend_BlogViet](https://github.com/vietvanba/Frontend_BlogViet)
+
 List of technical skills in project:
 
 Frontend:
@@ -40,7 +44,7 @@ Containerized:
 
 #### 1.1 Set up .env for Backend
 
-1. Copy .env file in folder `./1. EnvExample./Backend` to `./Backend` then replace your details
+1. Copy .env file in directory `./1. EnvExample./Backend` to `./Backend` then replace your details
 
 ```env
 JWT_SECRET=6249585ab12c6e87a183e49c8737f1c605b0c5cd664961f9333a3027d00f148e #Your secret key
@@ -63,7 +67,7 @@ QUESTION_SERVICE_NAME=question-service #question service name. Please note this 
 LOCATION_SERVICE_NAME=location-service #location service name. Please note this environment same as the service name that config in docker-compose file
 ```
 
-2. Copy sql.env file in folder `./1. EnvExample./Backend` to `./Backend` then replace your details
+2. Copy sql.env file in directory `./1. EnvExample./Backend` to `./Backend` then replace your details
 
 ```env
 POSTGRES_DB=account #set up your database name for postgres container
@@ -73,13 +77,13 @@ POSTGRES_PASSWORD=password #set up your password for postgres container
 
 #### 1.2 Set up .env for Frontend
 
-1. Copy .env file in folder `./1. EnvExample./Frontend` to `./Frontend` then replace your details
+1. Copy .env file in directory `./1. EnvExample./Frontend` to `./Frontend` then replace your details
 
 ```env
 VITE_API_URL='http://localhost' # Set up your domain
 ```
 
-### Step 2: Go to root folder and run the command line below to build and run the project
+### Step 2: Go to root directory and run the command line below to build and run the project
 
 ```docker
 docker-compose up -d --build # if this command not working. Please try run it with administrator or sudo command
