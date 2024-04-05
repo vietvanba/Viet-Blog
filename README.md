@@ -29,7 +29,7 @@ Database:
 
 > - Postgres
 
-System Services:
+Containerized:
 
 > - Docker
 
