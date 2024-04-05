@@ -1,0 +1,17 @@
+server:
+  port: '8083'
+spring:
+  datasource:
+    username: ${JDBC_DATABASE_USERNAME}
+    url: ${JDBC_DATABASE_URL}${LOCATION_SERVICE_DATABASE_NAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+  application:
+    name: "VietNamLocationApi"
+  jpa:
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: none
+log_path:
+  folder: "/var/log/location-service/"
+  file: "/location-service"
+

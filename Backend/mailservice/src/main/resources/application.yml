@@ -1,0 +1,17 @@
+server:
+  port: '8081'
+spring:
+  datasource:
+    username: ${JDBC_DATABASE_USERNAME}
+    url: ${JDBC_DATABASE_URL}${MAIL_SERVICE_DATABASE_NAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+  jpa:
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+mail:
+  username: ${MAIL_USERNAME}
+  password: ${MAIL_PASSWORD}
+log_path:
+  folder: /var/log/mail-service/
+  file: /mail-service

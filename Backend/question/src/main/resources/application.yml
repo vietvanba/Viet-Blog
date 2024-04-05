@@ -1,0 +1,16 @@
+server:
+  port: '8084'
+spring:
+  application:
+    name: question
+  datasource:
+    url: ${JDBC_DATABASE_URL}${QUESTION_SERVICE_DATABASE_NAME}
+    username: ${JDBC_DATABASE_USERNAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+log_path:
+  folder: "/var/log/question-service/"
+  file: "/question-service"

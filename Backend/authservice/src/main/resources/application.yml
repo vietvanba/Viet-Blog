@@ -1,0 +1,19 @@
+server:
+  port: '8082'
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}
+spring:
+  application:
+    name: "authservice"
+  datasource:
+    username: ${JDBC_DATABASE_USERNAME}
+    url: ${JDBC_DATABASE_URL}${AUTH_SERVICE_DATABASE_NAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+  jpa:
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+log_path:
+  folder: /var/log/auth-service/
+  file: /auth-service
