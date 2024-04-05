@@ -4,35 +4,42 @@ services:
   frontend:
     build: ./Frontend
     image: frontend
+    restart: always
     ports: 
       - 80:80
   api-gateway:
     build: ./Backend/api-gateway
     image: api-gateway
+    restart: always
     env_file:
       - ./Backend/.env
   auth-service:
     build: ./Backend/authservice
     image: auth-service
+    restart: always
     env_file:
       - ./Backend/.env
   question-service:
     build: ./Backend/question
     image: question-service
+    restart: always
     env_file:
       - ./Backend/.env
   mail-service:
     build: ./Backend/mailservice
     image: mail-service
+    restart: always
     env_file:
       - ./Backend/.env
   location-service:
     build: ./Backend/vnlocation-api
     image: location-service
+    restart: always
     env_file:
       - ./Backend/.env
   postgres:
     image: postgres:14
+    restart: always
     ports:
       - 5432:5432
     env_file:
