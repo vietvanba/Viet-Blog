@@ -35,11 +35,12 @@ export const Navbar = () => {
         <img src={`${rootPath}/logo.svg`} alt="" className="logo" />
         <div className="logo-text">VanBaViet</div>
       </Link>
-      <div className="bx" onClick={toggleMenu}>
+      <div className="bx">
         <FontAwesomeIcon
           className="bx-icon"
           icon={faBars}
           color="antiquewhite"
+          onClick={toggleMenu}
         />
         <ul
           className="items"
