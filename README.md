@@ -5,7 +5,7 @@
 The purpose of this project is to self-learn how to create a blog website and practice my skills, integrating some new technology, framework,...\
 This repository has been merged from two different repositories owned by me
 
-> [Backend_BlogViet](https://github.com/vietvanba/Backend_BlogViet) > <br/> > [Frontend_BlogViet](https://github.com/vietvanba/Frontend_BlogViet)
+> [Backend_BlogViet](https://github.com/vietvanba/Backend_BlogViet) <br/>  [Frontend_BlogViet](https://github.com/vietvanba/Frontend_BlogViet)
 
 List of technical skills in project:
 
