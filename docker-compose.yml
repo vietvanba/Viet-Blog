@@ -13,30 +13,40 @@ services:
     restart: always
     env_file:
       - ./Backend/.env
+    volumes:
+      - ./logs:/var/log
   auth-service:
     build: ./Backend/authservice
     image: auth-service
     restart: always
     env_file:
       - ./Backend/.env
+    volumes:
+      - ./logs:/var/log
   question-service:
     build: ./Backend/question
     image: question-service
     restart: always
     env_file:
       - ./Backend/.env
+    volumes:
+      - ./logs:/var/log
   mail-service:
     build: ./Backend/mailservice
     image: mail-service
     restart: always
     env_file:
       - ./Backend/.env
+    volumes:
+      - ./logs:/var/log
   location-service:
     build: ./Backend/vnlocation-api
     image: location-service
     restart: always
     env_file:
       - ./Backend/.env
+    volumes:
+      - ./logs:/var/log
   postgres:
     image: postgres:14
     restart: always
