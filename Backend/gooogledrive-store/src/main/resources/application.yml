@@ -1,0 +1,16 @@
+server:
+  port: 8086
+spring:
+  application:
+    name: gooogledrive-store
+  datasource:
+    username: ${JDBC_DATABASE_USERNAME}
+    url: ${JDBC_DATABASE_URL}${GOOGLE_DRIVE_DATABASE_NAME}
+    password: ${JDBC_DATABASE_PASSWORD}
+  jpa:
+    show-sql: 'true'
+    hibernate:
+      ddl-auto: update
+google:
+  drive:
+    root-dictionary: ${ROOTDICTIONARY_GOOGLEDRIVE}

@@ -18,11 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
-.logs
-.env
-sql.env
-local.env
-credential.json
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

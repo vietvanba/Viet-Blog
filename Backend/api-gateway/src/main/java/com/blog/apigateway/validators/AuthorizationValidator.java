@@ -23,6 +23,10 @@ public class AuthorizationValidator {
         urls.add(new AuthorizationURL("/api/location", HttpMethod.GET, "USER"));
         urls.add(new AuthorizationURL("/api/question", HttpMethod.GET, "USER"));
         urls.add(new AuthorizationURL("/api/question", HttpMethod.POST, "USER"));
+        urls.add(new AuthorizationURL("/api/google", HttpMethod.POST, "USER"));
+        urls.add(new AuthorizationURL("/api/google", HttpMethod.GET, "USER"));
+
+
     }
 
     public Predicate<ServerHttpRequest> unauthorized =

@@ -34,3 +34,4 @@ name:
     mail: ${MAIL_SERVICE_NAME:mail-service}
     question: ${QUESTION_SERVICE_NAME:question-service}
     location: ${LOCATION_SERVICE_NAME:location-service}
+    google: ${GOOGLE_SERVICE_NAME:googledrive-store}
