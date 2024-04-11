@@ -47,6 +47,14 @@ services:
       - ./Backend/.env
     volumes:
       - ./logs:/var/log
+  googledrive-store:
+    build: ./Backend/googledrive-store
+    image: googledrive-store
+    restart: always
+    env_file:
+      - ./Backend/.env
+    volumes:
+      - ./logs:/var/log
   postgres:
     image: postgres:14
     restart: always

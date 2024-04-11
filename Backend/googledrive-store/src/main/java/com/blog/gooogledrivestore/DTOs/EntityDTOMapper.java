@@ -18,6 +18,7 @@ public class EntityDTOMapper {
     public FileDTO convertToDTO(File file) {
         return modelMapper.map(file, FileDTO.class);
     }
+
     public File convertToFileEntities(com.google.api.services.drive.model.File file) {
         return modelMapper.map(file, File.class);
     }

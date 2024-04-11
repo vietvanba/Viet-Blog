@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.blog</groupId>
-	<artifactId>gooogledrive-store</artifactId>
+	<artifactId>googledrive-store</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>gooogledrive-store</name>
 	<description>gooogledrive-store</description>
