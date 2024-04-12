@@ -46,18 +46,18 @@ public class AuthService {
         if (accountRepository.existsByEmail(user.getEmail())) {
             LOGGER.error("Email already exists. Email: " + user.getEmail());
             LOGGER.error("Create user failed");
-            throw new CannotSave("Email already exists." +
+            throw new CannotSave("Email already exists.\n" +
                     "Please choose another email or reset your password");
         }
         if (accountRepository.existsById(user.getUsername())) {
             LOGGER.error("Username already exists. Email: " + user.getEmail() + ". Username: " + user.getUsername());
             LOGGER.error("Create user failed");
-            throw new CannotSave("The username already exists. Please choose another username");
+            throw new CannotSave("The username already exists.\n Please choose another username");
         }
         if (accountRepository.existsByPhoneNumber(user.getPhoneNumber())) {
             LOGGER.error("Phone number already exists. Email: " + user.getEmail() + ". Phone number: " + user.getPhoneNumber());
             LOGGER.error("Create user failed");
-            throw new CannotSave("Phone number already exists. Please choose another phone number");
+            throw new CannotSave("Phone number already exists.\n Please choose another phone number");
         }
         try {
             accountRepository.save(user);
