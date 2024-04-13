@@ -1,6 +1,6 @@
-package com.blog.gooogledrivestore.repositories;
+package com.blog.googledrivestore.repositories;
 
-import com.blog.gooogledrivestore.entities.Dictionary;
+import com.blog.googledrivestore.entities.Dictionary;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DictionaryRepository extends JpaRepository<Dictionary,String> {

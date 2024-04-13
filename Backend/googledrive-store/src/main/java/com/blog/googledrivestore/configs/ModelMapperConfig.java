@@ -1,4 +1,4 @@
-package com.blog.gooogledrivestore.configs;
+package com.blog.googledrivestore.configs;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;

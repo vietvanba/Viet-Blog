@@ -1,7 +1,7 @@
-package com.blog.gooogledrivestore.DTOs;
+package com.blog.googledrivestore.DTOs;
 
-import com.blog.gooogledrivestore.entities.Dictionary;
-import com.blog.gooogledrivestore.entities.File;
+import com.blog.googledrivestore.entities.Dictionary;
+import com.blog.googledrivestore.entities.File;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;

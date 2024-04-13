@@ -1,13 +1,13 @@
-package com.blog.gooogledrivestore;
+package com.blog.googledrivestore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class GooogledriveStoreApplication {
+public class GoogledriveStoreApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GooogledriveStoreApplication.class, args);
+		SpringApplication.run(GoogledriveStoreApplication.class, args);
 	}
 
 }

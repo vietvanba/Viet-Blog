@@ -1,4 +1,4 @@
-package com.blog.gooogledrivestore.DTOs;
+package com.blog.googledrivestore.DTOs;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

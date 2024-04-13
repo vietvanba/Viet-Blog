@@ -1,4 +1,4 @@
-package com.blog.gooogledrivestore.entities;
+package com.blog.googledrivestore.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

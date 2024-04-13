@@ -1,9 +1,9 @@
-package com.blog.gooogledrivestore.services;
+package com.blog.googledrivestore.services;
 
-import com.blog.gooogledrivestore.DTOs.DictionaryDTO;
-import com.blog.gooogledrivestore.DTOs.EntityDTOMapper;
-import com.blog.gooogledrivestore.entities.Dictionary;
-import com.blog.gooogledrivestore.repositories.DictionaryRepository;
+import com.blog.googledrivestore.DTOs.DictionaryDTO;
+import com.blog.googledrivestore.DTOs.EntityDTOMapper;
+import com.blog.googledrivestore.entities.Dictionary;
+import com.blog.googledrivestore.repositories.DictionaryRepository;
 import com.google.api.services.drive.Drive;
 import com.google.api.services.drive.model.File;
 import lombok.RequiredArgsConstructor;
@@ -38,11 +38,11 @@ public class GoogleDriveService {
             dictionary.setFiles(listFiles.parallelStream()
                     .filter(file -> !file.getMimeType().equals("application/vnd.google-apps.folder"))
                     .map(file -> {
-                        com.blog.gooogledrivestore.entities.File mappedFile = mapper.convertToFileEntities(file);
+                        com.blog.googledrivestore.entities.File mappedFile = mapper.convertToFileEntities(file);
                         mappedFile.setDictionary(dictionary);
                         return mappedFile;
                     })
-                    .sorted(Comparator.comparing(com.blog.gooogledrivestore.entities.File::getName))
+                    .sorted(Comparator.comparing(com.blog.googledrivestore.entities.File::getName))
                     .collect(Collectors.toList()));
 
             dictionary.setDictionaries(listFiles.parallelStream()
