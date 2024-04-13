@@ -8,10 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -30,5 +27,11 @@ public class AuthController {
     public ResponseEntity<?> login(@Validated @RequestBody AuthenticationRequest request) {
         LOGGER.info("Login process. Username: " + request.getUsername());
         return ResponseEntity.ok(service.login(request));
+    }
+    @GetMapping("/{username}")
+    public ResponseEntity<?> getUsername(@PathVariable(name = "username") String username)
+    {
+        LOGGER.info("Find username: "+username);
+        return ResponseEntity.ok(service.getUsername(username));
     }
 }

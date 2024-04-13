@@ -17,6 +17,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
@@ -100,5 +101,8 @@ public class AuthService {
                 .role(user.getRole().name())
                 .accessToken(jwtToken)
                 .build();
+    }
+    public Map<String, String> getUsername(String username) {
+        return accountRepository.existsByUsername(username) ? Map.of("username", username) : Map.of("username", "");
     }
 }
