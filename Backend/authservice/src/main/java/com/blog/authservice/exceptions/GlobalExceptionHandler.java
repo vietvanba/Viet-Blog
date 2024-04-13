@@ -16,32 +16,38 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(LoginFailed.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ResponseBody
-    public ErrorEntity handleLoginFailedException(LoginFailed e)
+    public List<ErrorEntity> handleLoginFailedException(LoginFailed e)
     {
+        List<ErrorEntity> errors = new ArrayList<>();
         ErrorEntity error = new ErrorEntity();
         error.setError(e.getMessage());
         error.setStatus(HttpStatus.UNAUTHORIZED);
-        return error;
+        errors.add(error);
+        return errors;
     }
     @ExceptionHandler(NotFound.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
-    public ErrorEntity handleNotFoundException(NotFound e)
+    public List<ErrorEntity> handleNotFoundException(NotFound e)
     {
+        List<ErrorEntity> errors = new ArrayList<>();
         ErrorEntity error = new ErrorEntity();
         error.setError(e.getMessage());
         error.setStatus(HttpStatus.NOT_FOUND);
-        return error;
+        errors.add(error);
+        return errors;
     }
     @ExceptionHandler(CannotSave.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public ErrorEntity handleCannotSaveException(CannotSave e)
+    public List<ErrorEntity> handleCannotSaveException(CannotSave e)
     {
+        List<ErrorEntity> errors = new ArrayList<>();
         ErrorEntity error = new ErrorEntity();
         error.setError(e.getMessage());
-        error.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
-        return error;
+        error.setStatus(HttpStatus.BAD_REQUEST);
+        errors.add(error);
+        return errors;
     }
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
