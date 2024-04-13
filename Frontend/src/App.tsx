@@ -9,6 +9,7 @@ import { Portfolio } from "./pages/portfolio/Portfolio";
 import { Toaster } from "react-hot-toast";
 import { SignIn } from "./pages/signin/SignIn";
 import { ListArticle } from "./components/listArticle/ListArticle";
+import { SignUp } from "./pages/signup/SignUp";
 
 function App() {
   const articleProps = {
@@ -63,6 +64,10 @@ function App() {
         {
           path: "/signin",
           element: <SignIn />,
+        },
+        {
+          path: "/signup",
+          element: <SignUp />,
         },
         {
           path: "/portfolio",
