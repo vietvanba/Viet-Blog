@@ -14,3 +14,13 @@ spring:
 google:
   drive:
     root-dictionary: ${ROOTDICTIONARY_GOOGLEDRIVE}
+eureka:
+  instance:
+    hostname: ${SERVER_REGISTRY_NAME:localhost}
+    port: ${SERVER_REGISTRY_PORT:8761}
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/

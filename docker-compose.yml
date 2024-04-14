@@ -5,7 +5,7 @@ services:
     build: ./Frontend
     image: frontend
     restart: always
-    ports: 
+    ports:
       - 80:80
   api-gateway:
     build: ./Backend/api-gateway
@@ -47,6 +47,16 @@ services:
       - ./Backend/.env
     volumes:
       - ./logs:/var/log
+  server-registry:
+    build: ./Backend/server-registry
+    image: server-registry
+    restart: always
+    env_file:
+      - ./Backend/.env
+    volumes:
+      - ./logs:/var/log
+    ports:
+      - 8761:8761
   googledrive-store:
     build: ./Backend/googledrive-store
     image: googledrive-store

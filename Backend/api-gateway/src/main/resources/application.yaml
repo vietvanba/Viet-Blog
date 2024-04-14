@@ -3,6 +3,8 @@ jwt:
 server:
   port: '8080'
 spring:
+  application:
+    name: api-gateway
   cloud:
     gateway:
       default-filters:
@@ -35,3 +37,13 @@ name:
     question: ${QUESTION_SERVICE_NAME:question-service}
     location: ${LOCATION_SERVICE_NAME:location-service}
     google: ${GOOGLE_SERVICE_NAME:googledrive-store}
+eureka:
+  instance:
+    hostname: ${SERVER_REGISTRY_NAME:localhost}
+    port: ${SERVER_REGISTRY_PORT:8761}
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/

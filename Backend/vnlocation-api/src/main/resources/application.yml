@@ -6,7 +6,7 @@ spring:
     url: ${JDBC_DATABASE_URL}${LOCATION_SERVICE_DATABASE_NAME}
     password: ${JDBC_DATABASE_PASSWORD}
   application:
-    name: "VietNamLocationApi"
+    name: "VietNamLocationApi-service"
   jpa:
     show-sql: 'true'
     hibernate:
@@ -14,4 +14,13 @@ spring:
 log_path:
   folder: "/var/log/location-service/"
   file: "/location-service"
-
+eureka:
+  instance:
+    hostname: ${SERVER_REGISTRY_NAME:localhost}
+    port: ${SERVER_REGISTRY_PORT:8761}
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
