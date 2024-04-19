@@ -33,7 +33,7 @@ public class GoogleDriveApiConfig {
                 .createScoped(DriveScopes.all());
         return new Drive.Builder(GoogleNetHttpTransport.newTrustedTransport(),
                 JSON_FACTORY,
-                credential)
+                credential).setServicePath("drive/v2").setBatchPath("batch/drive/v2")
                 .build();
     }
 }
