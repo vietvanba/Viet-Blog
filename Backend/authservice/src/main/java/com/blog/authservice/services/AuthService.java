@@ -92,7 +92,7 @@ public class AuthService {
         var user = accountRepository.findByUsername(request.getUsername())
                 .orElseThrow();
         var jwtToken = jwtService.generateToken(user);
-        LOGGER.error("Login succeed: " + request.getUsername());
+        LOGGER.info("Login succeed: " + request.getUsername());
         return AuthenticationResponse.builder()
                 .username(user.getUsername())
                 .firstName(user.getFirstName())
