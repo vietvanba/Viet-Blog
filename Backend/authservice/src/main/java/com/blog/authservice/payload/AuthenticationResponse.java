@@ -17,4 +17,6 @@ public class AuthenticationResponse {
     private String role;
     @JsonProperty("access_token")
     private String accessToken;
+    @JsonProperty(value = "avatar",defaultValue = "default_avatar.jpg")
+    private String avatar;
 }
