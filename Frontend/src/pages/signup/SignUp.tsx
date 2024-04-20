@@ -103,10 +103,13 @@ export const SignUp = () => {
           }
         })
         .catch((e: any) => {
-          e.response.data.map((error: any) => {
-            setLoading(false);
-            toast.error(error.error);
-          });
+          setLoading(false);
+          if (e.code !== null) toast.error(e.message);
+          else {
+            e.response.data.map((error: any) => {
+              toast.error(error.error, { duration: 2000 });
+            });
+          }
         });
     }
   };
