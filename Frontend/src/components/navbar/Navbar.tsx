@@ -1,7 +1,7 @@
 import "./navbar.scss";
 import menus from "./navbar.json";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import { faBars, faSignOut } from "@fortawesome/free-solid-svg-icons";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
 import { Userpopup } from "../userpopup/Userpopup";
