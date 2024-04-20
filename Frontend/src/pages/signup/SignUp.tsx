@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
 import BirthdayInput from "../../components/birthdayInput/BirthdayInput";
 import { useNavigate } from "react-router-dom";
+import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 export const SignUp = () => {
   const [formData, setFormData] = useState({
     username: "",
@@ -24,7 +25,7 @@ export const SignUp = () => {
   const [isValidPhoneNumber, setIsPhoneNumber] = useState(true);
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValidUsername, setIsValidUsername] = useState(true);
-
+  const [loading, setLoading] = useState<boolean>(false);
   const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { name, value } = e.target;
@@ -92,15 +93,18 @@ export const SignUp = () => {
       isValidPhoneNumber &&
       isValidConfirmPassword
     ) {
+      setLoading(true);
       post("/api/auth/register", formData)
         .then((res) => {
           if (res.status === 200) {
-            toast.success("Sign up succeed", { duration: 5000 });
+            setLoading(false);
+            toast.success("Sign up succeed", { duration: 2000 });
             navigate("/signin");
           }
         })
         .catch((e: any) => {
           e.response.data.map((error: any) => {
+            setLoading(false);
             toast.error(error.error);
           });
         });
@@ -108,6 +112,7 @@ export const SignUp = () => {
   };
   return (
     <div className="form">
+      {loading && <LoadingSpinner />}
       <div className="left-form">
         <img src="logo.svg" alt="" className="enterlogo" />
       </div>

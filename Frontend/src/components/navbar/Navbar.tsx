@@ -1,12 +1,14 @@
 import "./navbar.scss";
 import menus from "./navbar.json";
-import { Link, NavLink } from "react-router-dom";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { faBars, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 const rootPath = window.location.origin;
 
 export const Navbar = () => {
+  const avatarUrl = localStorage.getItem("avatar");
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState();
   const [isBXOpen, setIsBXOpen] = useState(false);
@@ -28,6 +30,10 @@ export const Navbar = () => {
   const handleMouseLeave = (title: any) => {
     setIsOpen(false);
     setTitle(title);
+  };
+  const handleLogOut = () => {
+    localStorage.clear();
+    navigate("/");
   };
   return (
     <div className="navbar">
@@ -90,14 +96,29 @@ export const Navbar = () => {
           ))}
         </ul>
       </div>
-      <div className="login">
-        <div className="item">
-          <NavLink to="/signin">Sign in</NavLink>
+      {localStorage.getItem("username") ? (
+        <div className="login">
+          <Link to={"/user_details"}>
+            <img
+              src={avatarUrl !== null ? avatarUrl : "default_avatar.jpg"}
+              alt=""
+              className="avatar"
+            />
+          </Link>
+          <div className="logout" onClick={handleLogOut}>
+            <FontAwesomeIcon icon={faSignOut} />
+          </div>
         </div>
-        <div className="item">
-          <NavLink to="/signup">Sign up</NavLink>
+      ) : (
+        <div className="login">
+          <div className="item">
+            <NavLink to="/signin">Sign in</NavLink>
+          </div>
+          <div className="item">
+            <NavLink to="/signup">Sign up</NavLink>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
