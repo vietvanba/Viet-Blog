@@ -3,13 +3,17 @@ import menus from "./navbar.json";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { faBars, faSignOut } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import { Userpopup } from "../userpopup/Userpopup";
 const rootPath = window.location.origin;
 
 export const Navbar = () => {
   const avatarUrl = localStorage.getItem("avatar");
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
+  const [userpopup, setUserpopup] = useState(false);
+  const popupRef = useRef<HTMLDivElement>(null);
+
   const [title, setTitle] = useState();
   const [isBXOpen, setIsBXOpen] = useState(false);
   const handleResize = () => {
@@ -27,14 +31,42 @@ export const Navbar = () => {
     setTitle(title);
   };
 
+  const handleAvatarOpen = () => {
+    setUserpopup(!userpopup);
+  };
+  const handleAvatarClose = () => {
+    setUserpopup(false);
+  };
   const handleMouseLeave = (title: any) => {
     setIsOpen(false);
     setTitle(title);
   };
   const handleLogOut = () => {
     localStorage.clear();
+    setIsOpen(false);
+    setUserpopup(false);
     navigate("/");
   };
+  const handleClick = () => {
+    setIsOpen(false);
+    setUserpopup(false);
+  };
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(event.target as Node)
+      ) {
+        handleAvatarClose();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [handleAvatarClose]);
   return (
     <div className="navbar">
       <Link to={"/"} className="homepage" onClick={handleResize}>
@@ -97,17 +129,21 @@ export const Navbar = () => {
         </ul>
       </div>
       {localStorage.getItem("username") ? (
-        <div className="login">
-          <Link to={"/user_details"}>
-            <img
-              src={avatarUrl !== null ? avatarUrl : "default_avatar.jpg"}
-              alt=""
-              className="avatar"
-            />
-          </Link>
-          <div className="logout" onClick={handleLogOut}>
-            <FontAwesomeIcon icon={faSignOut} />
-          </div>
+        <div className="user" ref={popupRef}>
+          <img
+            src={avatarUrl !== null ? avatarUrl : "default_avatar.jpg"}
+            alt=""
+            className="avatar"
+            onClick={handleAvatarOpen}
+          />
+          {userpopup && (
+            <div className="popup">
+              <Userpopup
+                handleLogout={handleLogOut}
+                handleClick={handleClick}
+              />
+            </div>
+          )}
         </div>
       ) : (
         <div className="login">

@@ -1,0 +1,44 @@
+@import "../../styles/variables.scss";
+.card {
+  max-height: 650px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  z-index: 1;
+  background-color: $card-bg;
+  .avatar_popup {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+  }
+  .welcome {
+    font-size: 1.5em;
+  }
+  .manager {
+    background-color: aqua;
+    padding: 5px 10px;
+    border-radius: 9999px;
+    font-size: large;
+    border: 1 solid gray;
+    font-size: 1em;
+    background-color: $card-bg;
+  }
+  .logout {
+    background-color: aqua;
+    cursor: pointer;
+    border: 0;
+    padding: 5px 10px;
+    border-radius: 9999px;
+    font-size: 1em;
+    color: $main-text-color;
+    background-color: $card-bg;
+    .icon {
+      font-size: 0.75em;
+    }
+  }
+}

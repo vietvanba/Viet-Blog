@@ -163,6 +163,26 @@
       }
     }
   }
+  .user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    .avatar {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0);
+      &:hover {
+        border: 2px solid $drop-shadow-color;
+      }
+    }
+    .popup {
+      position: absolute;
+      top: 40px;
+      right: 20px;
+    }
+  }
   .login {
     display: flex;
     justify-content: center;
@@ -170,19 +190,6 @@
     gap: 10px;
     @include lg {
       display: none;
-    }
-    height: 30px;
-    a {
-      height: 30px;
-    }
-    .avatar {
-      height: 30px;
-      width: 30px;
-      border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0);
-      &:hover {
-        border: 2px solid $drop-shadow-color;
-      }
     }
     .item {
       display: flex;
