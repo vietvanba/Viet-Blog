@@ -17,8 +17,8 @@ import java.security.GeneralSecurityException;
 
 @Configuration
 public class GoogleDriveApiConfig {
-    private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
-    private static final String SERVICE_ACCOUNT_KEY_PATH = getPathToGoogleCredentials();
+    public static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
+    public static final String SERVICE_ACCOUNT_KEY_PATH = getPathToGoogleCredentials();
 
     private static String getPathToGoogleCredentials() {
         String currentDictionary = System.getProperty("user.dir");
@@ -33,7 +33,7 @@ public class GoogleDriveApiConfig {
                 .createScoped(DriveScopes.all());
         return new Drive.Builder(GoogleNetHttpTransport.newTrustedTransport(),
                 JSON_FACTORY,
-                credential).setServicePath("drive/v2").setBatchPath("batch/drive/v2")
+                credential)
                 .build();
     }
 }

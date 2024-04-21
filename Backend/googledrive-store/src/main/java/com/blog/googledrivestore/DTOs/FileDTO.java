@@ -13,5 +13,7 @@ public class FileDTO {
     private String id;
     private String name;
     private String kind;
-    private String mimeType;
+    private String fileExtension;
+    private String thumbnailLink;
+    private Long durationMillis;
 }

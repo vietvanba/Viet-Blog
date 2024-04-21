@@ -19,7 +19,14 @@ public class EntityDTOMapper {
         return modelMapper.map(file, FileDTO.class);
     }
 
-    public File convertToFileEntities(com.google.api.services.drive.model.File file) {
-        return modelMapper.map(file, File.class);
+    public File convertToFileEntities(com.google.api.services.drive.model.File googleFile) {
+        return File.builder()
+                .id(googleFile.getId())
+                .name(googleFile.getOriginalFilename())
+                .kind(googleFile.getKind())
+                .fileExtension(googleFile.getFileExtension())
+                .thumbnailLink(googleFile.getThumbnailLink())
+                .durationMillis(googleFile.getVideoMediaMetadata() != null ? googleFile.getVideoMediaMetadata().getDurationMillis() : 0)
+                .build();
     }
 }
