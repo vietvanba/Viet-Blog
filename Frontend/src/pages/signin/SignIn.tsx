@@ -36,7 +36,7 @@ export const SignIn = () => {
       })
       .catch((e: any) => {
         setLoading(false);
-        if (e.code !== null) toast.error(e.message);
+        if (e.response == null) toast.error(e.message);
         else {
           e.response.data.map((error: any) => {
             toast.error(error.error, { duration: 2000 });
