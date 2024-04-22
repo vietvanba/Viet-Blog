@@ -23,9 +23,7 @@ public class AuthorizationValidator {
         urls.add(new AuthorizationURL("/api/location", HttpMethod.GET, "USER"));
         urls.add(new AuthorizationURL("/api/question", HttpMethod.GET, "USER"));
         urls.add(new AuthorizationURL("/api/question", HttpMethod.POST, "USER"));
-        urls.add(new AuthorizationURL("/api/google", HttpMethod.POST, "USER"));
-        urls.add(new AuthorizationURL("/api/google", HttpMethod.GET, "USER"));
-        urls.add(new AuthorizationURL("/api/google", HttpMethod.PATCH, "USER"));
+        urls.add(new AuthorizationURL("/api/google", HttpMethod.PATCH, "ADMIN"));
     }
 
     public Predicate<ServerHttpRequest> unauthorized =
@@ -34,6 +32,13 @@ public class AuthorizationValidator {
                             .noneMatch(url ->
                                     url.getRole().equals(getRole(request))
                                             && request.getURI().getPath().contains(url.getUrl())
+                                            && request.getMethod().equals(url.getMethod())
+                            );
+    public Predicate<ServerHttpRequest> unauthorizedWithoutRole =
+            request ->
+                    urls.stream()
+                            .anyMatch(url ->
+                                    request.getURI().getPath().contains(url.getUrl())
                                             && request.getMethod().equals(url.getMethod())
                             );
 

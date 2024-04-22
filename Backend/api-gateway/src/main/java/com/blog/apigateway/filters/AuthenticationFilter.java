@@ -2,7 +2,6 @@ package com.blog.apigateway.filters;
 
 import com.blog.apigateway.services.JwtUtil;
 import com.blog.apigateway.validators.AuthorizationValidator;
-import com.blog.apigateway.validators.RouterValidator;
 import io.jsonwebtoken.Claims;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -21,7 +20,6 @@ import reactor.core.publisher.Mono;
 @Component
 @RequiredArgsConstructor
 public class AuthenticationFilter implements GatewayFilter {
-    private final RouterValidator routerValidator;
     private final AuthorizationValidator authorizationValidator;
     private final JwtUtil jwtUtil;
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthenticationFilter.class);
@@ -31,9 +29,10 @@ public class AuthenticationFilter implements GatewayFilter {
         ServerHttpRequest request = exchange.getRequest();
         LOGGER.info("Start request");
         LOGGER.info("URL: " + request.getURI() + " Ip address: " + request.getHeaders().get("X-Forwarded-For"));
-        if (routerValidator.isSecured.test(request)) {
-            if (this.isAuthMissing(request))
+        if (this.isAuthMissing(request)) {
+            if (authorizationValidator.unauthorizedWithoutRole.test(request))
                 return this.onError(exchange, HttpStatus.UNAUTHORIZED);
+        } else {
             final String token = this.getAuthHeader(request);
             if (jwtUtil.isInvalid(token))
                 return this.onError(exchange, HttpStatus.FORBIDDEN);

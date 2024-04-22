@@ -16,9 +16,7 @@ public class File {
     private String id;
     private String name;
     private String kind;
-    private String fileExtension;
-    private String thumbnailLink;
-    private Long durationMillis;
+    private String mineType;
     @ManyToOne
     private Dictionary dictionary;
 

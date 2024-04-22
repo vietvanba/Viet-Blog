@@ -22,11 +22,9 @@ public class EntityDTOMapper {
     public File convertToFileEntities(com.google.api.services.drive.model.File googleFile) {
         return File.builder()
                 .id(googleFile.getId())
-                .name(googleFile.getOriginalFilename())
+                .name(googleFile.getName())
                 .kind(googleFile.getKind())
-                .fileExtension(googleFile.getFileExtension())
-                .thumbnailLink(googleFile.getThumbnailLink())
-                .durationMillis(googleFile.getVideoMediaMetadata() != null ? googleFile.getVideoMediaMetadata().getDurationMillis() : 0)
+                .mineType(googleFile.getMimeType())
                 .build();
     }
 }
