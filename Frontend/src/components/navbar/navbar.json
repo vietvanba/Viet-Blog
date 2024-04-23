@@ -9,7 +9,8 @@
       { "name": "Git", "url": "/blog/git", "items": [] },
       { "name": "Nginx", "url": "/blog/nginx", "items": [] },
       { "name": "Obsidian", "url": "/note/obsidian", "items": [] },
-      { "name": "Others", "url": "/note/others", "items": [] }
+      { "name": "Others", "url": "/note/others", "items": [] },
+      { "name": "Courses", "url": "/course", "items": [] }
     ]
   },
   { "name": "About", "url": "/about", "items": [] },

@@ -1,0 +1,28 @@
+@import "../../styles/variables.scss";
+.dictionaries {
+  width: 80%;
+
+  background-color: $card-bg;
+  border-radius: 10px;
+  .title {
+    width: 100%;
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  .dictionary {
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    overflow-y: scroll;
+    .subdic {
+      width: 95%;
+      background-color: $card-bg;
+      padding: 5px;
+      border-radius: 5px;
+    }
+  }
+}

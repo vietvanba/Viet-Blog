@@ -10,6 +10,7 @@ import { Toaster } from "react-hot-toast";
 import { SignIn } from "./pages/signin/SignIn";
 import { ListArticle } from "./components/listArticle/ListArticle";
 import { SignUp } from "./pages/signup/SignUp";
+import { Course } from "./pages/course/Course";
 
 function App() {
   const articleProps = {
@@ -82,6 +83,14 @@ function App() {
           element: (
             <>
               <ListArticle {...articleProps} />
+            </>
+          ),
+        },
+        {
+          path: "/course/:id?",
+          element: (
+            <>
+              <Course />
             </>
           ),
         },
