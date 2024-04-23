@@ -63,6 +63,7 @@ public class GoogleDriveService {
     }
 
     public DictionaryDTO updateData() {
+        repository.deleteAll();
         return mapper.convertToDTO(repository.save(fetchFromDrive(folderId, "root")));
     }
 
