@@ -2,7 +2,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./view.scss";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { faDownload } from "@fortawesome/free-solid-svg-icons/faDownload";
-import { useEffect, useRef } from "react";
 type ViewProps = {
   id: string | undefined;
   name: string | undefined;
