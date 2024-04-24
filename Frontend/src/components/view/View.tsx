@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./view.scss";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { faDownload } from "@fortawesome/free-solid-svg-icons/faDownload";
+import { useCallback, useEffect } from "react";
 type ViewProps = {
   id: string | undefined;
   name: string | undefined;
@@ -9,10 +10,25 @@ type ViewProps = {
 };
 
 export const View: React.FC<ViewProps> = ({ id, name, onClose }) => {
+  const escFunction = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    },
+    [onClose]
+  );
+  useEffect(() => {
+    document.addEventListener("keydown", escFunction, false);
+
+    return () => {
+      document.removeEventListener("keydown", escFunction, false);
+    };
+  }, [escFunction]);
   return (
     <div className="view">
       <div className="close" onClick={onClose}>
-        <FontAwesomeIcon icon={faClose} />
+        <FontAwesomeIcon icon={faClose} style={{ fontSize: "20px" }} />
       </div>
       <div className="preview">
         <iframe
