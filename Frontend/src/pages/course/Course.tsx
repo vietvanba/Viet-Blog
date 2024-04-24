@@ -10,6 +10,7 @@ import {
   faFileVideo,
   faFolder,
 } from "@fortawesome/free-regular-svg-icons";
+import { View } from "../../components/view/View";
 type File = {
   id: string;
   name: string;
@@ -27,12 +28,19 @@ type DictionaryWithParent = {
   dictionary: Dictionary;
   parentDictionary: Dictionary | null;
 };
+type ViewProps = {
+  id: string;
+  name: string;
+};
 export const Course = () => {
   const { id } = useParams();
   const [data, setData] = useState<Dictionary | null>();
   const [loading, setLoading] = useState<boolean>(false);
   const [currentData, setCurrentData] = useState<Dictionary | null>();
   const [parentIdBack, setParentIdBack] = useState<string | undefined>();
+  const [view, setView] = useState<ViewProps>();
+  const [isOpenView, setIsOpenView] = useState<boolean>(false);
+
   useEffect(() => {
     setLoading(true);
     console.log(id);
@@ -95,6 +103,13 @@ export const Course = () => {
 
     return null;
   };
+  const handleOpenFile = (id: string, name: string) => {
+    setView({ id, name });
+    setIsOpenView(true);
+  };
+  const handleCloseFile = () => {
+    setIsOpenView(false);
+  };
   return (
     <div className="dictionaries">
       <div className="title">COURSE</div>
@@ -116,17 +131,16 @@ export const Course = () => {
           </Link>
         ))}
         {currentData?.files.map((d) => (
-          <Link
-            id={d.id}
-            className="subdic"
-            to={"/course/" + d.id + "/" + currentData.id}
-          >
+          <div className="subdic" onClick={() => handleOpenFile(d.id, d.name)}>
             <FontAwesomeIcon icon={faFileVideo} />
             {` `}
             {d.name}
-          </Link>
+          </div>
         ))}
       </div>
+      {isOpenView && (
+        <View id={view?.id} name={view?.name} onClose={handleCloseFile} />
+      )}
     </div>
   );
 };
