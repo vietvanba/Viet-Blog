@@ -1,0 +1,36 @@
+.userdetail {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+
+  .wall {
+    width: 70%; /* Chiều rộng 100% của container */
+    height: 350px; /* Chiều cao mong muốn */
+    overflow: hidden;
+    border-radius: 10px;
+    .wall-image {
+      width: 100%; /* Chiều rộng 100% của ảnh */
+      height: auto; /* Đảm bảo tỷ lệ khung hình không bị biến đổi */
+      object-fit: cover;
+    }
+  }
+  .header {
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    .avatar {
+      height: 150px;
+      width: 150px;
+      border-radius: 50%;
+    }
+    .name {
+      font-size: 1.75em;
+    }
+  }
+  .form-infomation {
+  }
+}

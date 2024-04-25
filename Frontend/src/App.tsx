@@ -11,6 +11,7 @@ import { SignIn } from "./pages/signin/SignIn";
 import { ListArticle } from "./components/listArticle/ListArticle";
 import { SignUp } from "./pages/signup/SignUp";
 import { Course } from "./pages/course/Course";
+import { UserDetails } from "./pages/userDetails/UserDetails";
 
 function App() {
   const articleProps = {
@@ -91,6 +92,14 @@ function App() {
           element: (
             <>
               <Course />
+            </>
+          ),
+        },
+        {
+          path: "/user_details",
+          element: (
+            <>
+              <UserDetails />
             </>
           ),
         },
