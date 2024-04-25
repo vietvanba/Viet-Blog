@@ -21,6 +21,7 @@ public class AuthorizationValidator {
     @PostConstruct
     public void init() {
         urls.add(new AuthorizationURL("/api/location", HttpMethod.GET, "USER"));
+        urls.add(new AuthorizationURL("/api/account", HttpMethod.GET, "USER"));
         urls.add(new AuthorizationURL("/api/question", HttpMethod.GET, "USER"));
         urls.add(new AuthorizationURL("/api/question", HttpMethod.POST, "USER"));
         urls.add(new AuthorizationURL("/api/google", HttpMethod.PATCH, "ADMIN"));

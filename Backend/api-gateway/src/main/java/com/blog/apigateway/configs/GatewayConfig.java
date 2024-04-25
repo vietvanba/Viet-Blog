@@ -29,7 +29,7 @@ public class GatewayConfig {
                 .route("mail-service", r -> r.path("/api/mail/**")
                         .filters(f -> f.filter(authenticationFilter))
                         .uri("http://"+mailServiceName+":8081"))
-                .route("auth-service", r -> r.path("/api/auth/**")
+                .route("auth-service", r -> r.path("/api/auth/**","/api/account/**")
                         .filters(f -> f.filter(authenticationFilter))
                         .uri("http://"+authServiceName+":8082"))
                 .route("location-service", r -> r.path("/api/location/**")
