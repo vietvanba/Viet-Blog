@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import BirthdayInput from "../../components/birthdayInput/BirthdayInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleXmark, faPen } from "@fortawesome/free-solid-svg-icons";
+import { /*faCircleXmark,*/ faPen } from "@fortawesome/free-solid-svg-icons";
 import {} from "@fortawesome/free-regular-svg-icons";
 type Address = {
   id: string;
