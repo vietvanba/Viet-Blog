@@ -132,7 +132,7 @@ export const UserDetails = () => {
             <div className="wrap">
               <div className="lable-name">Email</div>
               <div className="status emailformat">
-                {!isValidEmail && <FontAwesomeIcon icon={faCircleXmark} />}
+                {/* {!isValidEmail && <FontAwesomeIcon icon={faCircleXmark} />} */}
               </div>
             </div>
 
@@ -149,9 +149,9 @@ export const UserDetails = () => {
             <div className="wrap">
               <div className="lable-name">Phone</div>
               <div className="status phone">
-                {!isValidPhoneNumber && (
+                {/* {!isValidPhoneNumber && (
                   <FontAwesomeIcon icon={faCircleXmark} />
-                )}
+                )} */}
               </div>
             </div>
             <input
