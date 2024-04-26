@@ -37,8 +37,8 @@ export const UserDetails = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  const [isValidEmail, setIsValidEmail] = useState(true);
-  const [isValidPhoneNumber, setIsPhoneNumber] = useState(true);
+  // const [isValidEmail, setIsValidEmail] = useState(true);
+  // const [isValidPhoneNumber, setIsPhoneNumber] = useState(true);
   const [isEditMode, SetIsEditMode] = useState(false);
 
   useEffect(() => {
@@ -65,14 +65,14 @@ export const UserDetails = () => {
     const { name, value } = e.target;
     setUserDetails({ ...userDetails, [name]: value });
   };
-  const validateEmail = (email: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setIsValidEmail(regex.test(email));
-  };
-  const validatePhoneNumber = (phone: string) => {
-    const regexPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
-    setIsPhoneNumber(regexPhoneNumber.test(phone));
-  };
+  // const validateEmail = (email: string) => {
+  //   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //   setIsValidEmail(regex.test(email));
+  // };
+  // const validatePhoneNumber = (phone: string) => {
+  //   const regexPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
+  //   setIsPhoneNumber(regexPhoneNumber.test(phone));
+  // };
 
   const handleBirthdayChange = (birthday: string) => {
     setUserDetails({ ...userDetails, ["birthday"]: birthday });
