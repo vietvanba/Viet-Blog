@@ -1,3 +1,4 @@
+@import "../../styles/variables.scss";
 .userdetail {
   display: flex;
   justify-content: center;
@@ -17,7 +18,7 @@
     }
   }
   .header {
-    transform: translateY(-50%);
+    transform: translateY(-37.5%);
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -26,11 +27,250 @@
       height: 150px;
       width: 150px;
       border-radius: 50%;
+      position: relative;
+    }
+    .edit {
+      position: absolute;
+      cursor: pointer;
+      right: -90%;
+      bottom: 0px;
+      background-color: $card-bg;
+      padding: 5px 10px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0);
+    }
+    .edit-active {
+      position: absolute;
+      cursor: pointer;
+      right: -90%;
+      bottom: 0px;
+      background-color: $edit-bg;
+      color: black;
+      padding: 5px 10px;
+      border-radius: 9999px;
+      border: 1px solid $main-text-color;
+
     }
     .name {
       font-size: 1.75em;
     }
   }
   .form-infomation {
+    transform: translateY(-20%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .user-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+      .fullname {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        .input {
+          width: 100%;
+          font-size: 1em;
+          height: 3em;
+          justify-content: space-between;
+          font-size: 1em;
+          font-weight: 400;
+          .wrap {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .emailformat {
+              display: flex;
+              color: red;
+              position: relative;
+              &:hover::after {
+                max-width: 50ch;
+                content: "Please correct your email";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: rgba(255, 255, 255, 0.7);
+                color: red;
+                padding: 5px;
+                border-radius: 5px;
+                white-space: pre-wrap;
+                z-index: 1;
+                width: 150px;
+              }
+            }
+            .phone {
+              display: flex;
+              color: red;
+              position: relative;
+              &:hover::after {
+                max-width: 50ch;
+                content: "Phone number format: \A +840123456789 \A 840123456789 \A 0123456789  ";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: rgba(255, 255, 255, 0.7);
+                color: red;
+                padding: 5px;
+                border-radius: 5px;
+                white-space: pre-wrap;
+                z-index: 1;
+                width: 150px;
+              }
+            }
+          }
+          input {
+            display: flex;
+            align-items: center;
+            border: 0px;
+            font-size: 1em;
+            height: 2em;
+            padding: 15px 15px;
+            border-radius: 9999px;
+            background-color: $main-text-color;
+          }
+        }
+      }
+      .input {
+        width: 100%;
+        .wrap {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          .password {
+            display: flex;
+            color: red;
+            position: relative;
+            &:hover::after {
+              max-width: 50ch;
+              content: "Must be at least: \A - 8 characters \A - 1 number \A - 1 uppercase letter \A - 1 lowercase letter \A - 1 special character!";
+              position: absolute;
+              top: 100%;
+              left: 50%;
+              transform: translateX(-50%);
+              background-color: rgba(255, 255, 255, 0.7);
+              color: red;
+              padding: 5px;
+              border-radius: 5px;
+              white-space: pre-wrap;
+              z-index: 1;
+              width: 150px;
+            }
+          }
+          .confirmpw {
+            display: flex;
+            color: red;
+            position: relative;
+            &:hover::after {
+              max-width: 50ch;
+              content: "Please correct your confirmation";
+              position: absolute;
+              top: 100%;
+              left: 50%;
+              transform: translateX(-50%);
+              background-color: rgba(255, 255, 255, 0.7);
+              color: red;
+              padding: 5px;
+              border-radius: 5px;
+              white-space: pre-wrap;
+              z-index: 1;
+              width: 150px;
+            }
+          }
+          .emailformat {
+            display: flex;
+            color: red;
+            position: relative;
+            &:hover::after {
+              max-width: 50ch;
+              content: "Please correct your email";
+              position: absolute;
+              top: 100%;
+              left: 50%;
+              transform: translateX(-50%);
+              background-color: rgba(255, 255, 255, 0.7);
+              color: red;
+              padding: 5px;
+              border-radius: 5px;
+              white-space: pre-wrap;
+              z-index: 1;
+              width: 150px;
+            }
+          }
+          .phone {
+            display: flex;
+            color: red;
+            position: relative;
+            &:hover::after {
+              max-width: 50ch;
+              content: "Phone number format: \A +840123456789 \A 840123456789 \A 0123456789  ";
+              position: absolute;
+              top: 100%;
+              left: 50%;
+              transform: translateX(-50%);
+              background-color: rgba(255, 255, 255, 0.7);
+              color: red;
+              padding: 5px;
+              border-radius: 5px;
+              white-space: pre-wrap;
+              z-index: 1;
+              width: 150px;
+            }
+          }
+          .username {
+            display: flex;
+            color: red;
+            position: relative;
+            &:hover::after {
+              max-width: 50ch;
+              content: "Username already in used. Please choose other username";
+              position: absolute;
+              top: 100%;
+              left: 50%;
+              transform: translateX(-50%);
+              background-color: rgba(255, 255, 255, 0.7);
+              color: red;
+              padding: 5px;
+              border-radius: 5px;
+              white-space: pre-wrap;
+              z-index: 1;
+              width: 150px;
+            }
+          }
+        }
+        input {
+          display: flex;
+          align-items: center;
+          border: 0px;
+          font-size: 1em;
+          height: 2em;
+          padding: 15px 15px;
+          border-radius: 9999px;
+          background-color: $main-text-color;
+        }
+        input {
+          width: 100%;
+        }
+      }
+      .submit {
+        display: flex;
+        width: 80px;
+        justify-content: center;
+        align-items: center;
+        font-size: 1em;
+        border: 0px;
+        height: 2em;
+        margin-top: 20px;
+        padding: 0 10px;
+        border-radius: 9999px;
+        cursor: pointer;
+        color: $drop-shadow-color;
+        background-color: $main-text-color;
+      }
+    }
   }
 }
