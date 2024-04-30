@@ -1,11 +1,6 @@
 import { useEffect, useState } from "react";
 import "./userDetails.scss";
-import {
-  getWithToken,
-  patch,
-  patchWithToken,
-  post,
-} from "../../components/axios/API";
+import { getWithToken, patchWithToken } from "../../components/axios/API";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
