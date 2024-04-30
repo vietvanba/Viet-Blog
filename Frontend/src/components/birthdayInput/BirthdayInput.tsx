@@ -2,8 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./birthdayInput.scss";
 interface BirthdayProps {
   onBirthdayChange: (birthday: string) => void;
+  brithday: string | undefined;
+  isEditMode: boolean;
 }
-const BirthdayInput: React.FC<BirthdayProps> = ({ onBirthdayChange }) => {
+const BirthdayInput: React.FC<BirthdayProps> = ({
+  onBirthdayChange,
+  brithday,
+  isEditMode,
+}) => {
   const [day, setDay] = useState<string>("");
   const [month, setMonth] = useState<string>("");
   const [year, setYear] = useState<string>("");
@@ -17,6 +23,17 @@ const BirthdayInput: React.FC<BirthdayProps> = ({ onBirthdayChange }) => {
   const formatValue = (value: string): string => {
     return value.padStart(2, "0");
   };
+  const removeLeadingZero = (value: string) => {
+    if (value.length === 2) {
+      if (
+        value.charAt(0) === "0" &&
+        ["01", "02", "03", "04", "05", "06", "07", "08", "09"].includes(value)
+      ) {
+        return value.charAt(1);
+      }
+    }
+    return value;
+  };
   const handleChange = () => {
     if (day && month && year) {
       const formattedDay = formatValue(day);
@@ -25,9 +42,20 @@ const BirthdayInput: React.FC<BirthdayProps> = ({ onBirthdayChange }) => {
       onBirthdayChange(birthday);
     }
   };
+  const splitDay = () => {
+    if (brithday != undefined && brithday != "") {
+      const birthDaySplited = brithday?.split("T")[0].split("-");
+      setDay(removeLeadingZero(birthDaySplited[2]));
+      setMonth(removeLeadingZero(birthDaySplited[1]));
+      setYear(removeLeadingZero(birthDaySplited[0]));
+    }
+  };
   useEffect(() => {
     handleChange();
   }, [day, month, year]);
+  useEffect(() => {
+    splitDay();
+  }, [brithday]);
   return (
     <div className="birthday">
       <select
@@ -35,6 +63,7 @@ const BirthdayInput: React.FC<BirthdayProps> = ({ onBirthdayChange }) => {
         onChange={(e) => {
           setDay(e.target.value);
         }}
+        disabled={!isEditMode}
       >
         <option value="">Day</option>
         {days.map((dayOption) => (
@@ -48,6 +77,7 @@ const BirthdayInput: React.FC<BirthdayProps> = ({ onBirthdayChange }) => {
         onChange={(e) => {
           setMonth(e.target.value);
         }}
+        disabled={!isEditMode}
       >
         <option value="">Month</option>
         {months.map((monthOption) => (
@@ -61,6 +91,7 @@ const BirthdayInput: React.FC<BirthdayProps> = ({ onBirthdayChange }) => {
         onChange={(e) => {
           setYear(e.target.value);
         }}
+        disabled={!isEditMode}
       >
         <option value="">Year</option>
         {years.map((yearOption) => (

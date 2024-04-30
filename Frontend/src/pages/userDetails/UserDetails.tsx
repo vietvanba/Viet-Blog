@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
 import "./userDetails.scss";
-import { getWithToken } from "../../components/axios/API";
+import {
+  getWithToken,
+  patch,
+  patchWithToken,
+  post,
+} from "../../components/axios/API";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
 import BirthdayInput from "../../components/birthdayInput/BirthdayInput";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { /*faCircleXmark,*/ faPen } from "@fortawesome/free-solid-svg-icons";
+import {
+  /*faCircleXmark,*/ faCircleXmark,
+  faPen,
+} from "@fortawesome/free-solid-svg-icons";
 import {} from "@fortawesome/free-regular-svg-icons";
 type Address = {
   id: string;
@@ -37,8 +45,7 @@ export const UserDetails = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  // const [isValidEmail, setIsValidEmail] = useState(true);
-  // const [isValidPhoneNumber, setIsPhoneNumber] = useState(true);
+  const [isValidPhoneNumber, setIsPhoneNumber] = useState(true);
   const [isEditMode, SetIsEditMode] = useState(false);
 
   useEffect(() => {
@@ -60,26 +67,54 @@ export const UserDetails = () => {
           })
       : navigate("/");
   }, []);
+  useEffect(() => {
+    validatePhoneNumber(userDetails?.phoneNumber);
+  }, [userDetails?.email, userDetails?.phoneNumber]);
   const handleOnChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { name, value } = e.target;
     setUserDetails({ ...userDetails, [name]: value });
   };
-  // const validateEmail = (email: string) => {
-  //   const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   setIsValidEmail(regex.test(email));
-  // };
-  // const validatePhoneNumber = (phone: string) => {
-  //   const regexPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
-  //   setIsPhoneNumber(regexPhoneNumber.test(phone));
-  // };
+  const validatePhoneNumber = (phone: string | undefined) => {
+    const regexPhoneNumber = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
+    if (phone != undefined) setIsPhoneNumber(regexPhoneNumber.test(phone));
+  };
 
   const handleBirthdayChange = (birthday: string) => {
     setUserDetails({ ...userDetails, ["birthday"]: birthday });
+    console.table(userDetails);
   };
-  const handleSubmit = () => {};
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const token = localStorage.getItem("token");
+    if (!isValidPhoneNumber) toast.error("Please correct your phone number.");
+    if (isValidPhoneNumber) {
+      setLoading(true);
+      if (token)
+        patchWithToken("/api/account", userDetails, token)
+          .then((res) => {
+            if (res.status === 200) {
+              setLoading(false);
+              toast.success("Update success", { duration: 2000 });
+              navigate("/user_details");
+            }
+          })
+          .catch((e: any) => {
+            setLoading(false);
+            if (e.response == null) toast.error(e.message);
+            else {
+              e.response.data.map((error: any) => {
+                toast.error(error.error, { duration: 2000 });
+              });
+            }
+          });
+    }
+  };
   const handleEditMode = () => {
     SetIsEditMode(!isEditMode);
+    toast(`Edit mode: ${!isEditMode ? "on" : "off"}`, {
+      icon: <FontAwesomeIcon icon={faPen} />,
+    });
   };
   return (
     <div className="userdetail">
@@ -126,32 +161,19 @@ export const UserDetails = () => {
           </div>
           <label className="input">
             <div className="lable-name">Birthday</div>
-            <BirthdayInput onBirthdayChange={handleBirthdayChange} />
-          </label>
-          <label className="input">
-            <div className="wrap">
-              <div className="lable-name">Email</div>
-              <div className="status emailformat">
-                {/* {!isValidEmail && <FontAwesomeIcon icon={faCircleXmark} />} */}
-              </div>
-            </div>
-
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              onChange={handleOnChangeInput}
-              value={userDetails?.email}
-              disabled={!isEditMode}
+            <BirthdayInput
+              onBirthdayChange={handleBirthdayChange}
+              brithday={userDetails?.birthday}
+              isEditMode={isEditMode}
             />
           </label>
           <label className="input">
             <div className="wrap">
               <div className="lable-name">Phone</div>
               <div className="status phone">
-                {/* {!isValidPhoneNumber && (
+                {!isValidPhoneNumber && (
                   <FontAwesomeIcon icon={faCircleXmark} />
-                )} */}
+                )}
               </div>
             </div>
             <input

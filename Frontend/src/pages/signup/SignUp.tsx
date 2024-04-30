@@ -65,6 +65,7 @@ export const SignUp = () => {
   };
   const handleBirthdayChange = (birthday: string) => {
     setFormData({ ...formData, ["birthday"]: birthday });
+    console.table(formData);
   };
   useEffect(() => {
     checkCondition();
@@ -191,7 +192,11 @@ export const SignUp = () => {
           </label>
           <label className="input">
             <div className="lable-name">Birthday</div>
-            <BirthdayInput onBirthdayChange={handleBirthdayChange} />
+            <BirthdayInput
+              onBirthdayChange={handleBirthdayChange}
+              brithday={formData.birthday}
+              isEditMode={true}
+            />
           </label>
           <label className="input">
             <div className="wrap">
