@@ -37,13 +37,15 @@ public class AccountService {
         String token = jwtService.getAuthHeader(request);
         String username = jwtService.extractUsername(token);
         Account accountDB = repository.findByUsername(username).orElseThrow();
-        if (repository.existsByPhoneNumber(account.getPhoneNumber())) {
+        if (repository.existsByPhoneNumber(account.getPhoneNumber()) && !accountDB.getPhoneNumber().equals(account.getPhoneNumber())) {
             LOGGER.error("Phone number already exists. Email: " + account.getEmail() + ". Phone number: " + account.getPhoneNumber());
             LOGGER.error("Create user failed");
             throw new CannotSave("Phone number already exists.\n Please choose another phone number");
         }
         if (accountDB.getUsername().equals(account.getUsername())) {
             //Logic has not been processed here. Please add validator and throw exception
+            accountDB.setFirstName(account.getFirstName());
+            accountDB.setLastName(account.getLastName());
             accountDB.setBirthday(account.getBirthday());
             accountDB.setAvatar(account.getAvatar());
             accountDB.setPhoneNumber(account.getPhoneNumber());
