@@ -37,6 +37,7 @@ name:
     question: ${QUESTION_SERVICE_NAME:question-service}
     location: ${LOCATION_SERVICE_NAME:location-service}
     google: ${GOOGLE_SERVICE_NAME:googledrive-store}
+    article: ${ARTICLE_SERVICE_NAME:article-service}
 eureka:
   instance:
     hostname: ${SERVER_REGISTRY_NAME:localhost}

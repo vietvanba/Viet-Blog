@@ -25,6 +25,8 @@ public class AuthorizationValidator {
         urls.add(new AuthorizationURL("/api/question", HttpMethod.GET, "USER"));
         urls.add(new AuthorizationURL("/api/question", HttpMethod.POST, "USER"));
         urls.add(new AuthorizationURL("/api/google", HttpMethod.PATCH, "ADMIN"));
+        urls.add(new AuthorizationURL("/api/category", HttpMethod.POST, "ADMIN"));
+        urls.add(new AuthorizationURL("/api/article", HttpMethod.POST, "ADMIN"));
         urls.add(new AuthorizationURL("/api/account", HttpMethod.PATCH, "USER"));
     }
 

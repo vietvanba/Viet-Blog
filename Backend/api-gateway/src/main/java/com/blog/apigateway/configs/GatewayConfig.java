@@ -23,6 +23,8 @@ public class GatewayConfig {
     private String locationServiceName;
     @Value("${name.services.google}")
     private String googleDriveStore;
+    @Value("${name.services.article}")
+    private String articleServiceName;
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder) {
         return builder.routes()
@@ -41,6 +43,9 @@ public class GatewayConfig {
                 .route("googledrive-store", r -> r.path("/api/google/**")
                         .filters(f -> f.filter(authenticationFilter))
                         .uri("http://"+googleDriveStore+":8086"))
+                .route("article-service", r -> r.path("/api/article/**","/api/category")
+                        .filters(f -> f.filter(authenticationFilter))
+                        .uri("http://"+articleServiceName+":8087"))
                 .build();
     }
 }
