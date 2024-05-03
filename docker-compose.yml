@@ -47,6 +47,14 @@ services:
       - ./Backend/.env
     volumes:
       - ./logs:/var/log
+  article-service:
+    build: ./Backend/article
+    image: article-service
+    restart: always
+    env_file:
+      - ./Backend/.env
+    volumes:
+      - ./logs:/var/log
   server-registry:
     build: ./Backend/server-registry
     image: server-registry
