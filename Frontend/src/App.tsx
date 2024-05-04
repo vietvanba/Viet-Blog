@@ -12,6 +12,9 @@ import { ListArticle } from "./components/listArticle/ListArticle";
 import { SignUp } from "./pages/signup/SignUp";
 import { Course } from "./pages/course/Course";
 import { UserDetails } from "./pages/userDetails/UserDetails";
+import { ArticleCreate } from "./pages/article/Create/ArticleCreate";
+import { ArticleView } from "./pages/article/View/ArticleView";
+import { Category } from "./pages/category/Category";
 
 function App() {
   const articleProps = {
@@ -50,7 +53,7 @@ function App() {
         >
           <Footer />
         </motion.div>
-        <Toaster position="top-right" />
+        <Toaster position="bottom-right" />
       </div>
     );
   };
@@ -100,6 +103,30 @@ function App() {
           element: (
             <>
               <UserDetails />
+            </>
+          ),
+        },
+        {
+          path: "/article/create",
+          element: (
+            <>
+              <ArticleCreate />
+            </>
+          ),
+        },
+        {
+          path: "/article/:id?",
+          element: (
+            <>
+              <ArticleView />
+            </>
+          ),
+        },
+        {
+          path: "/blog/:categoryID?",
+          element: (
+            <>
+              <Category />
             </>
           ),
         },

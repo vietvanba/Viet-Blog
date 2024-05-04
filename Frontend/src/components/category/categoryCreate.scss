@@ -1,0 +1,61 @@
+@import "../../styles/variables.scss";
+.category-create-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+
+  .category-form-create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px 50px;
+    background-color: #617c7b;
+    color: $main-text-color;
+    gap: 30px;
+    border-radius: 15px;
+    position: relative;
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      &:hover {
+        color: red;
+      }
+    }
+    input {
+      display: flex;
+      align-items: center;
+      border: 0px;
+      font-size: 1em;
+      height: 2em;
+      padding: 15px 15px;
+      border-radius: 9999px;
+      background-color: $main-text-color;
+      width: 350px;
+    }
+
+    .submit {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1em;
+      border: 0px;
+      height: 2em;
+      padding: 0 10px;
+      border-radius: 9999px;
+      cursor: pointer;
+      color: $drop-shadow-color;
+      background-color: $main-text-color;
+      width: 100px;
+    }
+  }
+}

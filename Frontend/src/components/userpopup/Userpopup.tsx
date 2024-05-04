@@ -12,12 +12,13 @@ export const Userpopup: React.FC<PopupProps> = ({
   handleClick,
 }) => {
   const avatarUrl = localStorage.getItem("avatar");
+  const rootPath = window.location.origin;
 
   return (
     <div className="card">
       <div className="email">{localStorage.getItem("email")}</div>
       <img
-        src={avatarUrl !== null ? avatarUrl : "default_avatar.jpg"}
+        src={avatarUrl !== null ? avatarUrl : `${rootPath}/default_avatar.jpg`}
         alt=""
         className="avatar_popup"
       />

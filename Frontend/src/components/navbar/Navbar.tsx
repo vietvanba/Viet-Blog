@@ -1,13 +1,42 @@
 import "./navbar.scss";
-import menus from "./navbar.json";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
 import { Userpopup } from "../userpopup/Userpopup";
+import { get } from "../axios/API";
+import toast from "react-hot-toast";
 const rootPath = window.location.origin;
 
+type SubCategory = {
+  name: string;
+  url: string;
+  items: SubCategory[];
+};
+type Category = {
+  id: string;
+  name: string;
+  status: string;
+};
 export const Navbar = () => {
+  const [menus, setMenus] = useState<SubCategory[]>([
+    { name: "Home", url: "/", items: [] },
+    {
+      name: "Blog",
+      url: "/blog",
+      items: [],
+    },
+    { name: "About", url: "/about", items: [] },
+    { name: "Contact", url: "/contact", items: [] },
+    {
+      name: "Book Store",
+      url: "/bookstore",
+      items: [],
+    },
+    { name: "Portfolio", url: "/portfolio", items: [] },
+    { name: "Sign in", url: "/signin", items: [] },
+    { name: "Sign up", url: "/signup", items: [] },
+  ]);
   const avatarUrl = localStorage.getItem("avatar");
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +47,33 @@ export const Navbar = () => {
   const [isBXOpen, setIsBXOpen] = useState(false);
   const handleResize = () => {
     window.innerWidth < 1024 ? setIsBXOpen(false) : setIsBXOpen(true);
+  };
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+  const fetchCategory = () => {
+    get("/api/category")
+      .then((res) => {
+        if (res.status === 200) {
+          res.data.map((x: Category) => {
+            const menu: SubCategory = {
+              name: x.name,
+              url: `blog/${x.id}`,
+              items: [],
+            };
+            menus[1].items.push(menu);
+          });
+          setMenus(menus);
+        }
+      })
+      .catch((e: any) => {
+        if (e.response == null) toast.error(e.message);
+        else {
+          e.response.data.map((error: any) => {
+            toast.error(error.error, { duration: 2000 });
+          });
+        }
+      });
   };
   React.useEffect(() => {
     window.innerWidth < 1024 ? setIsBXOpen(false) : setIsBXOpen(true);
@@ -131,7 +187,9 @@ export const Navbar = () => {
       {localStorage.getItem("username") ? (
         <div className="user" ref={popupRef}>
           <img
-            src={avatarUrl !== null ? avatarUrl : "default_avatar.jpg"}
+            src={
+              avatarUrl !== null ? avatarUrl : `${rootPath}/default_avatar.jpg`
+            }
             alt=""
             className="avatar"
             onClick={handleAvatarOpen}

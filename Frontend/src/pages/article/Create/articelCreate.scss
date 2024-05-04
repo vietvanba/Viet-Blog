@@ -1,0 +1,109 @@
+@import "../../../styles/variables.scss";
+.article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    .article-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: 100%;
+
+      .input {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        border: 0px;
+        font-size: 1em;
+        height: 1.75em;
+        padding: 15px 15px;
+        border-radius: 9999px;
+        background-color: $main-text-color;
+      }
+    }
+    .article-category {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      .input {
+        display: flex;
+        align-items: center;
+        border: 0px;
+        font-size: 1em;
+        height: 1.75em;
+        padding: 0 15px;
+        border-radius: 9999px;
+        background-color: $main-text-color;
+        color: black;
+      }
+      .create-category {
+        font-size: 1.25em;
+        cursor: pointer;
+        &:hover {
+          color: $drop-shadow-color;
+        }
+      }
+    }
+  }
+  .title {
+    font-size: 1em;
+    font-weight: 600;
+  }
+  .tool-tip {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    .tool-tip-left {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      input {
+        padding: 5px 10px;
+        background-color: $button-bg;
+        border-radius: 9999px;
+        cursor: pointer;
+        &:hover {
+          background-color: $button-bg-hover;
+        }
+        border: 1px solid $main-soft-color;
+      }
+      input::file-selector-button {
+        background-color: $button-bg;
+        border-radius: 9999px;
+        border: 1px solid $main-text-color;
+        color: $main-text-color;
+        cursor: pointer;
+      }
+      .export {
+        border: 1px solid $main-soft-color;
+        display: flex;
+      }
+    }
+    .tool-tip-right {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+    .button {
+      cursor: pointer;
+      padding: 5px 10px;
+      background-color: $button-bg;
+      border-radius: 9999px;
+      border: 1px solid $main-soft-color;
+
+      &:hover {
+        background-color: $button-bg-hover;
+      }
+    }
+  }
+}
