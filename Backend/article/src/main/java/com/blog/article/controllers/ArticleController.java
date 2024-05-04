@@ -23,8 +23,8 @@ public class ArticleController {
 //        return ResponseEntity.ok(service.getAllArticle());
 //    }
     @GetMapping()
-    public ResponseEntity<?> getAllArticleByCategory(@RequestParam String id,@RequestParam(defaultValue = "0") Integer pageNo,@RequestParam(defaultValue = "10") Integer pageSize) {
-        return ResponseEntity.ok(service.getAllArticleByCategory(id,pageNo,pageSize));
+    public ResponseEntity<?> getAllArticleByCategory(@RequestParam String categoryId,@RequestParam(defaultValue = "0") Integer pageNo,@RequestParam(defaultValue = "10") Integer pageSize) {
+        return ResponseEntity.ok(service.getAllArticleByCategory(categoryId,pageNo,pageSize));
     }
 
     @PostMapping()

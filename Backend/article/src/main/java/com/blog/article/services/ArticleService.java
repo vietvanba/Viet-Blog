@@ -59,9 +59,9 @@ public class ArticleService {
         return dto;
     }
 
-    public Page<?> getAllArticleByCategory(String id, Integer pageNo, Integer pageSize) {
+    public Page<?> getAllArticleByCategory(String categoryId, Integer pageNo, Integer pageSize) {
         PageRequest pageable = PageRequest.of(pageNo, pageSize);
-        Page<Article> list = repository.findAllByCategory_Id(id, pageable);
+        Page<Article> list = repository.findAllByCategory_Id(categoryId, pageable);
         return list.map(x -> {
             ArticleDTO dto = mapper.map(x, ArticleDTO.class);
             dto.setCategory(x.getCategory().getName());
