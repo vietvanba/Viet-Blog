@@ -9,6 +9,8 @@ import com.blog.article.repositories.ArticleRepository;
 import com.blog.article.repositories.CategoryRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -55,5 +57,15 @@ public class ArticleService {
         ArticleDTO dto = mapper.map(article, ArticleDTO.class);
         dto.setCategory(category.getName());
         return dto;
+    }
+
+    public Page<?> getAllArticleByCategory(String id, Integer pageNo, Integer pageSize) {
+        PageRequest pageable = PageRequest.of(pageNo, pageSize);
+        Page<Article> list = repository.findAllByCategory_Id(id, pageable);
+        return list.map(x -> {
+            ArticleDTO dto = mapper.map(x, ArticleDTO.class);
+            dto.setCategory(x.getCategory().getName());
+            return dto;
+        });
     }
 }

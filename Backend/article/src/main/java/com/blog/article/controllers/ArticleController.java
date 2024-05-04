@@ -18,9 +18,13 @@ public class ArticleController {
         return ResponseEntity.ok(service.getArticle(id));
     }
 
+//    @GetMapping()
+//    public ResponseEntity<?> getAllArticle() {
+//        return ResponseEntity.ok(service.getAllArticle());
+//    }
     @GetMapping()
-    public ResponseEntity<?> getAllArticle() {
-        return ResponseEntity.ok(service.getAllArticle());
+    public ResponseEntity<?> getAllArticleByCategory(@RequestParam String id,@RequestParam(defaultValue = "0") Integer pageNo,@RequestParam(defaultValue = "10") Integer pageSize) {
+        return ResponseEntity.ok(service.getAllArticleByCategory(id,pageNo,pageSize));
     }
 
     @PostMapping()
