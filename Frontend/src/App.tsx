@@ -8,7 +8,6 @@ import { motion } from "framer-motion";
 import { Portfolio } from "./pages/portfolio/Portfolio";
 import { Toaster } from "react-hot-toast";
 import { SignIn } from "./pages/signin/SignIn";
-import { ListArticle } from "./components/listArticle/ListArticle";
 import { SignUp } from "./pages/signup/SignUp";
 import { Course } from "./pages/course/Course";
 import { UserDetails } from "./pages/userDetails/UserDetails";

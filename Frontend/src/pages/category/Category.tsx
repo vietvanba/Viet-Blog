@@ -1,10 +1,10 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import "./category.scss";
 import { useEffect, useState } from "react";
 import { get } from "../../components/axios/API";
 import toast from "react-hot-toast";
 import LoadingSpinner from "../../components/loadingSpinner/LoadingSpinner";
-import { ListArticle } from "../../components/listArticle/ListArticle";
+import { ListArticle } from "../article/listArticle/ListArticle";
 export const Category = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
