@@ -20,4 +20,5 @@ public class ArticleMinimal {
     private String content;
     private Long views;
     private String category;
+    private Date createdOn;
 }
