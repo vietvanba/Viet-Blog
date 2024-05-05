@@ -17,15 +17,6 @@ import { ArticleView } from "./pages/article/View/ArticleView";
 import { Category } from "./pages/category/Category";
 
 function App() {
-  const articleProps = {
-    id: 1,
-    excerptImgUrl: "logo.svg",
-    title: "Example Title",
-    openingText:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    createdTime: "17 March 2023",
-    category: "Java",
-  };
   const Layout = () => {
     return (
       <div className="main">
@@ -83,14 +74,6 @@ function App() {
           element: <Notfound />,
         },
         {
-          path: "/test",
-          element: (
-            <>
-              <ListArticle {...articleProps} />
-            </>
-          ),
-        },
-        {
           path: "/course/:id?",
           element: (
             <>
@@ -123,7 +106,7 @@ function App() {
           ),
         },
         {
-          path: "/blog/:categoryID?",
+          path: "/blog",
           element: (
             <>
               <Category />

@@ -58,7 +58,7 @@ export const Navbar = () => {
           res.data.map((x: Category) => {
             const menu: SubCategory = {
               name: x.name,
-              url: `blog/${x.id}`,
+              url: `blog?categoryId=${x.id}&pageNo=0`,
               items: [],
             };
             menus[1].items.push(menu);

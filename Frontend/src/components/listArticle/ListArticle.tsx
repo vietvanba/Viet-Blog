@@ -1,28 +1,36 @@
 import { Link } from "react-router-dom";
 import "./listArticle.scss";
 type Article = {
-  id: number;
-  excerptImgUrl: string;
+  id: string;
   title: string;
-  openingText: string;
-  createdTime: string;
+  authorName: string;
+  authorUsername: string;
+  content: string;
+  views: number;
   category: string;
+  createdOn: string;
 };
-export const ListArticle = (props: Article) => {
-  // const handleClick: React.MouseEventHandler<HTMLDivElement> = (event) => {
-  //   console.log("Div clicked");
-  //   // Thực hiện các hành động mong muốn khi sự kiện xảy ra
-  // };
-
+type ListArticleProps = {
+  article: Article;
+};
+export const ListArticle: React.FC<ListArticleProps> = ({ article }) => {
+  const rootPath = window.location.origin;
   return (
-    <Link className="list" to={"" + props.id}>
-      <img src={props.excerptImgUrl} alt={props.title} className="excerpt" />
+    <Link className="list" to={`${rootPath}/article/${article.id}`}>
+      <img
+        src={`${rootPath}/logo.svg`}
+        alt={article.title}
+        className="excerpt"
+      />
       <div className="preview">
-        <div className="title">{props.title}</div>
-        <div className="opening-text">{props.openingText}</div>
+        <Link to={`user/${article.authorUsername}`} className="author">
+          {article.authorName}
+        </Link>
+        <div className="createOn">{article.createdOn}</div>
+        <div className="title">{article.title}</div>
+        <div className="opening-text">{article.content}</div>
         <div className="additional-detail">
-          <div className="created-time">{props.createdTime}</div>
-          <div className="category"> IN {props.category}</div>
+          <div className="category"> IN {article.category}</div>
         </div>
       </div>
     </Link>
