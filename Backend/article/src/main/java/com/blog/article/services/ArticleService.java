@@ -7,8 +7,9 @@ import com.blog.article.enums.ArticleStatus;
 import com.blog.article.enums.CategoryStatus;
 import com.blog.article.repositories.ArticleRepository;
 import com.blog.article.repositories.CategoryRepository;
+import com.blog.article.response.ArticleMinimal;
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -18,13 +19,11 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ArticleService {
-    @Autowired
-    ArticleRepository repository;
-    @Autowired
-    CategoryRepository categoryRepository;
-    @Autowired
-    ModelMapper mapper;
+    private final ArticleRepository repository;
+    private final CategoryRepository categoryRepository;
+    private final ModelMapper mapper;
 
     public ArticleDTO getArticle(String id) {
         Article article = repository.findById(id).orElseThrow();
@@ -63,9 +62,12 @@ public class ArticleService {
         PageRequest pageable = PageRequest.of(pageNo, pageSize);
         Page<Article> list = repository.findAllByCategory_Id(categoryId, pageable);
         return list.map(x -> {
-            ArticleDTO dto = mapper.map(x, ArticleDTO.class);
-            dto.setCategory(x.getCategory().getName());
-            return dto;
+            ArticleMinimal minimal = mapper.map(x, ArticleMinimal.class);
+            minimal.setCategory(x.getCategory().getName());
+            if (minimal.getContent().length() > 200) {
+                minimal.setContent(minimal.getContent().substring(0, 200));
+            }
+            return minimal;
         });
     }
 }
