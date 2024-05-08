@@ -11,8 +11,8 @@ import { SignIn } from "./pages/signin/SignIn";
 import { SignUp } from "./pages/signup/SignUp";
 import { Course } from "./pages/course/Course";
 import { UserDetails } from "./pages/userDetails/UserDetails";
-import { ArticleCreate } from "./pages/article/Create/ArticleCreate";
-import { ArticleView } from "./pages/article/View/ArticleView";
+import { ArticleCreate } from "./pages/article/create/ArticleCreate";
+import { ArticleView } from "./pages/article/view/ArticleView";
 import { Category } from "./pages/category/Category";
 
 function App() {

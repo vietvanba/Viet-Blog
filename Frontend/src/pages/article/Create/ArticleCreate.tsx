@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { MarkdownEditor } from "../../../components/markdown/markdownEditor/MarkdownEditor";
+import { useEffect, useRef, useState } from "react";
 import "./articelCreate.scss";
 import toast from "react-hot-toast";
 import { get, postWithToken } from "../../../components/axios/API";
@@ -8,6 +7,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { CategoryCreate } from "../../../components/category/CategoryCreate";
 import { saveAs } from "file-saver";
+import RichTextEditor from "quill-react-commercial";
+import Quill from "quill-react-commercial/node_modules/quill/core";
+import "quill-react-commercial/lib/index.css";
 
 type Category = {
   id: string;
@@ -22,10 +24,18 @@ export const ArticleCreate = () => {
 
   const [categorySeted, setCategorySeted] = useState<string>("");
   const [category, setCategory] = useState<Category[]>([]);
-  // const [isPreview, setIsPreview] = useState<boolean>(false);
   useEffect(() => {
     fetchCategory();
   }, []);
+  const quill = useRef<Quill>();
+  const imgsList = useRef<string[]>();
+  const getQuill = (
+    quillIns: Quill,
+    uploadedImgsList?: string[] | undefined
+  ) => {
+    quill.current = quillIns;
+    imgsList.current = uploadedImgsList;
+  };
   const fetchCategory = () => {
     setLoading(true);
     get("/api/category")
@@ -70,7 +80,7 @@ export const ArticleCreate = () => {
             " " +
             localStorage.getItem("last_name"),
           authorUsername: localStorage.getItem("username"),
-          content: value,
+          content: JSON.stringify(quill.current?.getContents()),
           category: {
             id: categorySeted,
           },
@@ -193,7 +203,15 @@ export const ArticleCreate = () => {
       <div className="edit-box">
         <div className="left-box"></div>
         <div className="central-box">
-          <MarkdownEditor value={value} setValue={setValue} />
+          <RichTextEditor
+            modules={{
+              table: {},
+              codeHighlight: true,
+              markdown: true,
+            }}
+            getQuill={getQuill}
+            style={{ height: "500px", marginBottom: "100px" }}
+          />
         </div>
         <div className="right-box"></div>
       </div>
