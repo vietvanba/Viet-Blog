@@ -44,7 +44,7 @@ public class DictionaryService {
     }
 
     public Search search(String word) {
-        String url = "https://wordsapiv1.p.rapidapi.com/words/?letterPattern=^%s.$".formatted(word);
+        String url = "https://wordsapiv1.p.rapidapi.com/words/?letterPattern=^%s$".formatted(word);
         return webClient.get().uri(url)
                 .header("X-RapidAPI-Host", wordsapiHost)
                 .header("X-RapidAPI-Key", wordsapiKey)
