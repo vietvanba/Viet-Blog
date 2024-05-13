@@ -25,6 +25,8 @@ public class GatewayConfig {
     private String googleDriveStore;
     @Value("${name.services.article}")
     private String articleServiceName;
+    @Value("${name.services.dictionary}")
+    private String dictionaryServiceName;
     @Bean
     public RouteLocator routes(RouteLocatorBuilder builder) {
         return builder.routes()
@@ -46,6 +48,9 @@ public class GatewayConfig {
                 .route("article-service", r -> r.path("/api/article/**","/api/category")
                         .filters(f -> f.filter(authenticationFilter))
                         .uri("http://"+articleServiceName+":8087"))
+                .route("dictionary-service", r -> r.path("/api/dictionary/**")
+                        .filters(f -> f.filter(authenticationFilter))
+                        .uri("http://"+dictionaryServiceName+":8088"))
                 .build();
     }
 }

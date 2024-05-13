@@ -55,6 +55,14 @@ services:
       - ./Backend/.env
     volumes:
       - ./logs:/var/log
+  dictionary-service:
+    build: ./Backend/dictionary
+    image: dictionary-service
+    restart: always
+    env_file:
+      - ./Backend/.env
+    volumes:
+      - ./logs:/var/log
   server-registry:
     build: ./Backend/server-registry
     image: server-registry
