@@ -5,15 +5,10 @@ services:
     restart: always
     ports:
       - 80:80
-    depends_on:
-      - server-registry
   api-gateway:
     build: ./Backend/api-gateway
     image: api-gateway
     restart: always
-    depends_on:
-      - frontend
-      - postgres
     env_file:
       - ./Backend/.env
     volumes:
@@ -24,8 +19,6 @@ services:
     restart: always
     env_file:
       - ./Backend/.env
-    depends_on:
-      - api-gateway
     volumes:
       - ./logs:/var/log
   question-service:
@@ -42,8 +35,6 @@ services:
     restart: always
     env_file:
       - ./Backend/.env
-    depends_on:
-      - auth-service
     volumes:
       - ./logs:/var/log
   location-service:
@@ -58,8 +49,6 @@ services:
     build: ./Backend/article
     image: article-service
     restart: always
-    depends_on:
-      - mail-service
     env_file:
       - ./Backend/.env
     volumes:
@@ -72,8 +61,6 @@ services:
       - ./Backend/.env
     volumes:
       - ./logs:/var/log
-    depends_on:
-      - article-service
   server-registry:
     build: ./Backend/server-registry
     image: server-registry
@@ -84,8 +71,6 @@ services:
       - ./logs:/var/log
     ports:
       - 8761:8761
-    depends_on:
-      - postgres
   googledrive-store:
     build: ./Backend/googledrive-store
     image: googledrive-store
