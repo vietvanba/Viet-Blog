@@ -23,14 +23,14 @@ services:
       - ./Backend/.env
     volumes:
       - ./logs:/var/log
-  question-service:
-    build: ./Backend/question
-    image: question-service
-    restart: always
-    env_file:
-      - ./Backend/.env
-    volumes:
-      - ./logs:/var/log
+  # question-service:
+  #   build: ./Backend/question
+  #   image: question-service
+  #   restart: always
+  #   env_file:
+  #     - ./Backend/.env
+  #   volumes:
+  #     - ./logs:/var/log
   mail-service:
     build: ./Backend/mailservice
     image: mail-service
@@ -39,14 +39,14 @@ services:
       - ./Backend/.env
     volumes:
       - ./logs:/var/log
-  location-service:
-    build: ./Backend/vnlocation-api
-    image: location-service
-    restart: always
-    env_file:
-      - ./Backend/.env
-    volumes:
-      - ./logs:/var/log
+  # location-service:
+  #   build: ./Backend/vnlocation-api
+  #   image: location-service
+  #   restart: always
+  #   env_file:
+  #     - ./Backend/.env
+  #   volumes:
+  #     - ./logs:/var/log
   article-service:
     build: ./Backend/article
     image: article-service
@@ -91,14 +91,14 @@ services:
     volumes:
       - ./Backend/init.sql:/docker-entrypoint-initdb.d/init.sql
       - postgres-data:/var/lib/postgresql/data
-  redis:
-    image: redis:7.2.4-alpine
-    restart: always
-    build: ./Backend/redis
-    ports:
-      - 6379:6379
-    volumes:
-      - redis-data:/data
+  # redis:
+  #   image: redis:7.2.4-alpine
+  #   restart: always
+  #   build: ./Backend/redis
+  #   ports:
+  #     - 6379:6379
+  #   volumes:
+  #     - redis-data:/data
 volumes:
   postgres-data:
-  redis-data:
+  # redis-data:
