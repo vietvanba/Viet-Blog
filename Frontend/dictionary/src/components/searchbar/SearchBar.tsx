@@ -94,7 +94,7 @@ export const SearchBar: React.FC<SearchBarProps> = ({ handleSearch }) => {
           ))}
       </div>
       <div className="absolute bottom-12">
-        <div className="flex justify-center items-center">
+        <div className="flex justify-center items-center dark:text-neutral-200 text-neutral-800">
           <Welcome />
         </div>
       </div>
