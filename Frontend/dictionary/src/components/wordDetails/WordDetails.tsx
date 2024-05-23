@@ -39,10 +39,10 @@ export const WordDetails: React.FC<WordDetailsProps> = ({ word }) => {
             <HiOutlineSpeakerWave />
             <div className="pronunciation">{word?.pronunciation?.all}</div>
             <div className="syllables">
-              {`[${word?.syllables?.list.map((w) => ` ${w}`)} ]`}{" "}
+              {`[${word && word?.syllables?.list.map((w) => ` ${w}`)} ]`}{" "}
             </div>
           </div>
-          {word.results.map((d, index) => (
+          {word && word?.results?.map((d, index) => (
             <>
               <div className="">{`Definition ${index + 1}: (${
                 d.partOfSpeech
