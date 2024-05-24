@@ -27,7 +27,7 @@ export const Navbar = () => {
       items: [],
     },
     { name: "About", url: "/about", items: [] },
-    { name: "Contact", url: "/contact", items: [] },
+    { name: "AI llama3", url: "https://llama3.vanbaviet.com", items: [] },
     {
       name: "Dictionary",
       url: "https://dictionary.vanbaviet.com",
