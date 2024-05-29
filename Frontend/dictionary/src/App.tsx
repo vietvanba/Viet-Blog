@@ -1,11 +1,13 @@
 import { Outlet, RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import { Navbar } from "./components/navbar/Navbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Home } from "./pages/home/Home";
 import { Footer } from "./components/footer/Footer";
 import { DarkmodeButton } from "./components/darkmodeButton/DarkmodeButton";
 import { BlogButton } from "./components/blogButton/BlogButton";
+import { NotFound } from "./pages/notfound/NotFound";
+import { Premium } from "./pages/premium/Premium";
 
 function App() {
   const [darkmode, setDarkmode] = useState<boolean>(false);
@@ -14,6 +16,13 @@ function App() {
     document.body.classList.toggle("dark");
     localStorage.setItem("mode", !darkmode ? "dark" : "light");
   };
+  useEffect(() => {
+    if (localStorage.getItem("mode") === "dark") {
+      setDarkmode(true);
+      document.body.classList.toggle("dark");
+    }
+  }, []);
+
   const Layout = () => {
     return (
       <div className="main w-full h-screen grid grid-rows-12 bg-neutral-100 dark:bg-neutral-900 font-main transition-all duration-200">
@@ -43,8 +52,16 @@ function App() {
       element: <Layout />,
       children: [
         {
+          path: "*",
+          element: <NotFound />,
+        },
+        {
           path: "/",
           element: <Home />,
+        },
+        {
+          path: "/premium",
+          element: <Premium />,
         },
       ],
     },
