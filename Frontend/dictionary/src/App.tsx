@@ -30,7 +30,7 @@ function App() {
           <Navbar />
         </div>
         <>
-          <Outlet />
+          <Outlet/>
         </>
         <div className="footer row-span-1">
           <Footer />

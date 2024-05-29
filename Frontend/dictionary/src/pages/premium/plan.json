@@ -1,0 +1,13 @@
+{
+  "name": "Starter",
+  "price": "$10",
+  "period": "month",
+  "introduction": "The essentials to provide your best work for clients.",
+  "greeting": "Everything necessary to get started.",
+  "benefits": [
+    "5 products",
+    "Up to 1,000 subscribers",
+    "Basic analytics",
+    "48-hour support response time"
+  ]
+}
