@@ -1,13 +1,47 @@
-{
-  "name": "Starter",
-  "price": "$10",
-  "period": "month",
-  "introduction": "The essentials to provide your best work for clients.",
-  "greeting": "Everything necessary to get started.",
-  "benefits": [
-    "5 products",
-    "Up to 1,000 subscribers",
-    "Basic analytics",
-    "48-hour support response time"
-  ]
-}
+[
+  {
+    "id": "basic",
+    "name": "Basic",
+    "price": "$5",
+    "period": "month",
+    "introduction": "An entry-level plan to enhance your vocabulary.",
+    "greeting": "Start learning new words effortlessly.",
+    "benefits": [
+      "Access to 10,000 words",
+      "Basic word definitions",
+      "Limited offline access",
+      "72-hour support response time"
+    ]
+  },
+  {
+    "id": "pro",
+    "name": "Pro",
+    "price": "$15",
+    "period": "month",
+    "introduction": "Advanced tools for avid learners and professionals.",
+    "greeting": "Elevate your language skills with advanced features.",
+    "benefits": [
+      "Access to 50,000 words",
+      "Detailed word definitions and examples",
+      "Full offline access",
+      "24-hour support response time",
+      "No ads"
+    ]
+  },
+  {
+    "id": "elite",
+    "name": "Elite",
+    "price": "$30",
+    "period": "month",
+    "introduction": "The ultimate plan for language enthusiasts and experts.",
+    "greeting": "Unlock the full potential of your vocabulary.",
+    "benefits": [
+      "Unlimited word access",
+      "Comprehensive definitions with historical usage",
+      "Full offline access with synchronization",
+      "Priority support response time",
+      "Customizable learning paths",
+      "Access to exclusive language resources"
+    ]
+  }
+]
