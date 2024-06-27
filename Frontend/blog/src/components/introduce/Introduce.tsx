@@ -27,7 +27,7 @@ export const Introduce = () => {
             <FontAwesomeIcon icon={faArrowRight} className="icon" />
           </motion.button>
           <a
-            href="https://drive.google.com/uc?export=download&id=1nGRYavmLuMYfNQn93PqKy2OJp7_aTHiq"
+            href="https://drive.google.com/uc?export=download&id=11hMx25_JadjB7uEoz-sGbzJENAGvFfsy"
             download
           >
             <motion.button
@@ -68,11 +68,7 @@ export const Introduce = () => {
                 animate={{ x: 0, scale: 1, opacity: 1 }}
                 transition={{ duration: 1 }}
               >
-                <img
-                  src="github.svg"
-                  alt="github"
-                  className="githubimg"
-                />
+                <img src="github.svg" alt="github" className="githubimg" />
               </motion.button>
             </Link>
           </div>
