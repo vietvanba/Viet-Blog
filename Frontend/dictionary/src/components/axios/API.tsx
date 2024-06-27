@@ -1,5 +1,5 @@
 import axios from "axios";
-const endpoint = import.meta.env.VITE_API_URL;
+const endpoint = "https://" + import.meta.env.VITE_HOST;
 export async function get(url: String) {
   return await axios.get(endpoint + url, {
     headers: { "Content-type": "application/json" },
