@@ -7,7 +7,6 @@ import { Userpopup } from "../userpopup/Userpopup";
 import { get } from "../axios/API";
 import toast from "react-hot-toast";
 const rootPath = window.location.origin;
-const host = import.meta.env.VITE_HOST;
 
 type SubCategory = {
   name: string;
@@ -30,7 +29,7 @@ export const Navbar = () => {
     { name: "About", url: "/about", items: [] },
     {
       name: "Dictionary",
-      url: "https://dictionary." + host,
+      url: "https://dictionary.vanbaviet.online",
       items: [],
     },
     { name: "Portfolio", url: "/portfolio", items: [] },
